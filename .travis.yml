@@ -1,10 +1,9 @@
 sudo: required
-language: node_js
 services:
   - docker
 
 before_install:
-  - docker-compose -f ./docker-compose.travis.yml up -d node
-  - docker-compose -f ./docker-compose.travis.yml logs
+  - docker build -t vkouk/movieholic -f Dockerfile.dev .
 
-install: true
+script:
+  - docker run vkouk/movieholic
