@@ -6,4 +6,4 @@ before_install:
   - docker build -t vkouk/movieholic -f Dockerfile.dev .
 
 script:
-  - docker run vkouk/movieholic
+  - docker run vkouk/movieholic npm run test -- --coverage
