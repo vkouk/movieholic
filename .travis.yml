@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run vkouk/movieholic npm run test -- --coverage
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-2"
+  app: "movieholic"
+  env: "Movieholic-env"
+  bucket_name: "elasticbeanstalk-us-east-2-075636905734"
+  bucket_path: "movieholic"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: "$AWS_SECRET_ACCESS_KEY"
