@@ -2,6 +2,6 @@ import React from 'react';
 
 export default () => {
     return (
-        <p>Hello Ther!!</p>
+        <p>Hello There!!</p>
     );
 };

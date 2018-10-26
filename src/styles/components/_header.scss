@@ -1,0 +1,45 @@
+.header {
+    height: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: rgba(240, 241, 213, .5);
+
+    &__content {
+        height: 120px;
+        @include u-dflex-center;
+        justify-content: space-around;
+    }
+
+    &__logo {
+        & > img {
+            height: 120px;
+        }
+    }
+
+    &__menu {
+        display: flex;
+        list-style: none;
+
+        &__item {
+            padding: 0 5px;
+            transition: all .5s ease;
+            &:hover {
+                transform: translateX(-3px);
+                -webkit-transform: translateX(-3px);
+            }
+
+            & > a {
+                color: $darkblue;
+                font-size: $md-font;
+                font-weight: 700;
+                letter-spacing: 1.3px;
+                text-transform: uppercase;
+                text-decoration: none;
+                &:active, &:focus {
+                    color: $darkblue;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.footer {
+    height: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    background-color: rgba(240, 241, 213, .5);
+
+    &__content {
+        @include u-dflex-center;
+        justify-content: space-around;
+        height: 40px;
+    }
+}

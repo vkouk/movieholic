@@ -1,0 +1,10 @@
+// Settings, Variables & Mixins
+@import './settings';
+
+// Components
+@import './components/header';
+@import './components/footer';
+
+body, html {
+    font-family: 'Montserrat', sans-serif;
+}

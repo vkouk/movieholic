@@ -1,6 +1,5 @@
 import 'normalize.css/normalize.css';
 import 'tachyons';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/styles.scss';
 import React from 'react';
 import ReactDOM from 'react-dom';
