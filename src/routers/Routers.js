@@ -6,6 +6,7 @@ import Landing from '../components/Landing';
 import Register from '../components/Auth/Register';
 import Login from '../components/Auth/Login';
 import Profile from '../components/Profile/Profile';
+import Movie from '../components/Movie/Movie';
 
 export default () => {
     return (
@@ -13,6 +14,7 @@ export default () => {
             <div>
                 <Header />
                 <Route exact path="/" component={Landing} />
+                <Route path="/movies" component={Movie} />
                 <Route path="/profile/:id" component={Profile} />
                 <Route path="/register" component={Register} />
                 <Route path="/login" component={Login} />
