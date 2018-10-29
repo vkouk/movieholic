@@ -36,6 +36,7 @@
                 letter-spacing: 1.3px;
                 text-transform: uppercase;
                 text-decoration: none;
+                cursor: pointer;
                 &:active, &:focus {
                     color: $darkblue;
                 }

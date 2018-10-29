@@ -1,7 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { logoutUser } from '../actions';
 import { Link } from 'react-router-dom';
 
 class Header extends Component {
+    onLogout = e => {
+        e.preventDefault();
+
+        this.props.logoutUser();
+    };
+
     render() {
         return (
             <header className="header">
@@ -22,10 +30,24 @@ class Header extends Component {
                         <li className="header__menu__item">
                             <Link to="/cart">Cart</Link>
                         </li>
-                        {/* Check if user is admin or not. */}
+                        {
+                            this.props.user.isAdmin ?
+                                <li className="header__menu__item">
+                                    <Link to="/dashboard">Dashboard</Link>
+                                </li>
+                                : null
+                        }
                         <li className="header__menu__item">
-                            <Link to="/dashboard">Dashboard</Link>
+                            {
+                                this.props.isAuthenticated ? <a href="javascript:void(0)" onClick={this.onLogout}>Logout</a> : <Link to="/register">Register</Link>
+                            }
                         </li>
+                        {
+                            this.props.isAuthenticated ? null :
+                                <li className="header__menu__item">
+                                    <Link to="/login">Login</Link>
+                                </li>
+                        }
                     </ul>
                 </div>
             </header>
@@ -33,4 +55,10 @@ class Header extends Component {
     }
 }
 
-export default Header;
+const mapStateToProps = ({ auth }) => {
+    const { isAuthenticated, user } = auth;
+
+    return { isAuthenticated, user };
+}
+
+export default connect(mapStateToProps, { logoutUser })(Header);
