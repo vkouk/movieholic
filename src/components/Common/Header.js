@@ -15,7 +15,7 @@ class Header extends Component {
             <header className="header">
                 <div className="header__content">
                     <div className="header__logo">
-                        <img src="https://creator.design/_logos/30/logo-30_09.png" alt="Movieholic Logo" />
+                        <img src="./images/logo.png" alt="Movieholic Logo" />
                     </div>
                     <ul className="header__menu">
                         <li className="header__menu__item">

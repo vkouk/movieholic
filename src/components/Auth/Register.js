@@ -27,10 +27,10 @@ class Register extends Component {
 
     render() {
         return (
-            <div className={"form"}>
-                <form className={"form__content"} onSubmit={this.onFormSubmit}>
+            <div className="form">
+                <form className="form__content" onSubmit={this.onFormSubmit}>
                     <input
-                        className={"form__input"}
+                        className="form__input"
                         type="email"
                         name="email"
                         value={this.state.email}
@@ -38,7 +38,7 @@ class Register extends Component {
                         placeholder="Email..."
                     />
                     <input
-                        className={"form__input"}
+                        className="form__input"
                         type="text"
                         name="username"
                         value={this.state.username}
@@ -46,14 +46,14 @@ class Register extends Component {
                         placeholder="Username..."
                     />
                     <input
-                        className={"form__input"}
+                        className="form__input"
                         type="password"
                         name="password"
                         value={this.state.password}
                         onChange={this.onFormChange}
                         placeholder="Password..."
                     />
-                    <input className={"form__submit"} type="submit" />
+                    <input className="form__submit" type="submit" />
                     {this.props.error && <p className="form__error">{this.props.error}</p>}
                 </form>
             </div>
