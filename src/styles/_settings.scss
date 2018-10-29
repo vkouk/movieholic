@@ -6,6 +6,7 @@ $md-font: 16px;
 $lg-font: 22px;
 
 //Colors
+$white: #fff;
 $darkblue: #105187;
 $turquoise: #2C8693;
 $beige: #F0F1D5;
@@ -18,4 +19,17 @@ $lightred: #C33325;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+@mixin u-btn {
+    padding: 15px 25px;
+    margin: 0 auto;
+    border: 2px solid $turquoise;
+    background: transparent;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: $turquoise;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    transition: all .6s linear;
 }
