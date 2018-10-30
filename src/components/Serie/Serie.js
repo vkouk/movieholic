@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchMovies } from '../../actions/movieActions';
-import MovieList from '../Common/ListItem';
+import { fetchSeries } from '../../actions';
+import SerieList from '../Common/ListItem';
 
-class Movie extends Component {
+class Serie extends Component {
     componentDidMount() {
-        this.props.fetchMovies();
+        this.props.fetchSeries();
     }
 
     renderContent = () => {
-        if (this.props.movies.length === 0 || this.props.movies.length === null) {
+        if (this.props.series.length === 0 || this.props.series.length === null) {
             return (
                 <div className="container-fluid">
                     <div className="row">
@@ -20,9 +20,9 @@ class Movie extends Component {
                 </div>
             );
         } else {
-            return <MovieList
+            return <SerieList
                 location={this.props.location.pathname}
-                data={this.props.movies}
+                data={this.props.series}
             />
         }
     };
@@ -32,10 +32,10 @@ class Movie extends Component {
     }
 }
 
-const mapStateToProps = ({ movie }) => {
-    const { movies } = movie;
+const mapStateToProps = ({ serie }) => {
+    const { series } = serie;
 
-    return { movies };
+    return { series };
 }
 
-export default connect(mapStateToProps, { fetchMovies })(Movie);
+export default connect(mapStateToProps, { fetchSeries })(Serie);

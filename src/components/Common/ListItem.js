@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from './Item';
 
-export default ({ data }) => {
+export default ({ data, location }) => {
     return (
         <div className="container-fluid">
             <div className="row">
@@ -9,6 +9,7 @@ export default ({ data }) => {
                     return (
                         <Item
                             key={record._id}
+                            location={location}
                             {...record}
                         />
                     )

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ genre, plot, poster, released, stock, title }) => {
+export default ({ genre, plot, poster, released, stock, title, location }) => {
     return (
         <div className="col-sm-3">
             <article className="bg-white center mw5 ba b--black-10 mv4">
@@ -10,7 +10,7 @@ export default ({ genre, plot, poster, released, stock, title }) => {
                 </div>
                 <img src={poster} className="w-100 db" alt={title} />
                 <div className="pa3">
-                    <Link href="#" to={`/movie/${title}`} className="link dim lh-title">{title}</Link>
+                    <Link href="#" to={ location === '/movies' ? `/movie/${title}` : `/serie/${title}` } className="link dim lh-title">{title}</Link>
                     <small className="gray db pv2">Released {released} - {stock} left in stock</small>
                 </div>
             </article>
