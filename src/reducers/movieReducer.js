@@ -13,7 +13,7 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case FETCH_MOVIES:
-            return { ...state, movies: action.payload, error: '' };
+            return { ...state, movies: action.payload, movie: {}, error: '' };
         case GET_MOVIE:
             return { ...state, movie: action.payload, error: '' };
         case FETCH_ERROR:
