@@ -11,13 +11,13 @@ class Login extends Component {
 
     componentDidMount() {
         if (this.props.isAuthenticated) {
-            this.props.history.push('/profile');
+            this.props.history.push('/');
         }
     }
 
     static getDerivedStateFromProps(nextProps, prevState) {
         if (nextProps.isAuthenticated) {
-            nextProps.history.push('/profile');
+            nextProps.history.push('/');
         }
         return null;
     }
