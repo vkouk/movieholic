@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default ({ genre, plot, poster, released, stock, title }) => {
     return (
@@ -9,7 +10,7 @@ export default ({ genre, plot, poster, released, stock, title }) => {
                 </div>
                 <img src={poster} className="w-100 db" alt={title} />
                 <div className="pa3">
-                    <a href="#" className="link dim lh-title">{title}</a>
+                    <Link href="#" to={`/movie/${title}`} className="link dim lh-title">{title}</Link>
                     <small className="gray db pv2">Released {released} - {stock} left in stock</small>
                 </div>
             </article>

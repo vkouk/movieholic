@@ -19,33 +19,33 @@ class Header extends Component {
                     </div>
                     <ul className="header__menu">
                         <li className="header__menu__item">
-                            <Link to="/">Home</Link>
+                            <Link to={"/"}>Home</Link>
                         </li>
                         <li className="header__menu__item">
-                            <Link to="/movies">Movies</Link>
+                            <Link to={"/movies"}>Movies</Link>
                         </li>
                         <li className="header__menu__item">
-                            <Link to="/series">Series</Link>
+                            <Link to={"/series"}>Series</Link>
                         </li>
                         <li className="header__menu__item">
-                            <Link to="/cart">Cart</Link>
+                            <Link to={"/cart"}>Cart</Link>
                         </li>
                         {
                             this.props.user.isAdmin ?
                                 <li className="header__menu__item">
-                                    <Link to="/dashboard">Dashboard</Link>
+                                    <Link to={"/dashboard"}>Dashboard</Link>
                                 </li>
                                 : null
                         }
                         <li className="header__menu__item">
                             {
-                                this.props.isAuthenticated ? <a href="javascript:void(0)" onClick={this.onLogout}>Logout</a> : <Link to="/register">Register</Link>
+                                this.props.isAuthenticated ? <a href="javascript:void(0)" onClick={this.onLogout}>Logout</a> : <Link to={"/register"}>Register</Link>
                             }
                         </li>
                         {
                             this.props.isAuthenticated ? null :
                                 <li className="header__menu__item">
-                                    <Link to="/login">Login</Link>
+                                    <Link to={"/login"}>Login</Link>
                                 </li>
                         }
                     </ul>

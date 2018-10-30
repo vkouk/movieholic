@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../actions/movieActions';
-import MovieList from './MovieList';
+import MovieList from '../Common/ListItem';
 
 class Movie extends Component {
     componentDidMount() {
@@ -11,7 +11,7 @@ class Movie extends Component {
     render() {
         return (
             <MovieList
-                movies={this.props.movies}
+                data={this.props.movies}
             />
         );
     }
