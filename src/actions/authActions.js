@@ -1,15 +1,15 @@
 import axios from 'axios';
+import { Config } from '../utils/Config';
 import {
     AUTH_USER,
     UNAUTH_USER,
-    AUTH_ERROR
+    AUTH_ERROR,
+    UPDATE_USER
 } from './types';
 import setAuthToken from '../utils/AuthToken';
 
-let API_URL = 'http://movieholic-api.herokuapp.com/api';
-
 export const loginUser = ({ email, password }) => async dispatch => {
-    await axios.post(`${API_URL}/user/login`, { email, password })
+    await axios.post(`${Config.API_URL}/user/login`, { email, password })
         .then(({ data }) => {
             localStorage.setItem('token', data.token);
             setAuthToken(data.token);
@@ -19,7 +19,7 @@ export const loginUser = ({ email, password }) => async dispatch => {
 };
 
 export const registerUser = (userData, history) => async dispatch => {
-    await axios.post(`${API_URL}/user/register`, userData)
+    await axios.post(`${Config.API_URL}/user/register`, userData)
         .then(() => history.push('/login'))
         .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
 };
@@ -31,13 +31,13 @@ export const logoutUser = () => dispatch => {
 };
 
 export const getProfile = id => async dispatch => {
-    await axios.get(`${API_URL}/user/profile/${id}`)
+    await axios.get(`${Config.API_URL}/user/profile/${id}`)
         .then(({ data }) => dispatch({ type: AUTH_USER, payload: data }))
         .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
 };
 
 export const updateProfile = (profileValues, id) => async dispatch => {
-    await axios.post(`${API_URL}/user/profile/${id}`, profileValues)
-        .then(({ data }) => dispatch({ type: AUTH_USER, payload: data }))
+    await axios.post(`${Config.API_URL}/user/profile/${id}`, profileValues)
+        .then(({ data }) => dispatch({ type: UPDATE_USER, payload: data }))
         .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
 };
