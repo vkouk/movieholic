@@ -8,12 +8,26 @@ class Movie extends Component {
         this.props.fetchMovies();
     }
 
-    render() {
-        return (
-            <MovieList
+    renderContent = () => {
+        if (this.props.movies.length === 0 || this.props.movies.length === null) {
+            return (
+                <div className="container-fluid">
+                    <div className="row">
+                        <div className="col-sm-12 text-center pt-2">
+                            <p>No content found.</p>
+                        </div>
+                    </div>
+                </div>
+            );
+        } else {
+            return <MovieList
                 data={this.props.movies}
             />
-        );
+        }
+    };
+
+    render() {
+        return this.renderContent();
     }
 }
 
