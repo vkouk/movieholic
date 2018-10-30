@@ -29,3 +29,15 @@ export const logoutUser = () => dispatch => {
     setAuthToken(false);
     dispatch({ type: UNAUTH_USER, payload: {} });
 };
+
+export const getProfile = id => async dispatch => {
+    await axios.get(`${API_URL}/user/profile/${id}`)
+        .then(({ data }) => dispatch({ type: AUTH_USER, payload: data }))
+        .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
+};
+
+export const updateProfile = (profileValues, id) => async dispatch => {
+    await axios.post(`${API_URL}/user/profile/${id}`, profileValues)
+        .then(({ data }) => dispatch({ type: AUTH_USER, payload: data }))
+        .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
+};

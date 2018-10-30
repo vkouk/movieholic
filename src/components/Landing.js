@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 class Landing extends Component {
     render() {
         return (
-            <div className="container">Hello {this.props.user.username && `, ${this.props.user.username}`}</div>
+            <Link to={`/profile/${this.props.user._id}`}><div className="container">Hello {this.props.user.username && `, ${this.props.user.username}`}</div></Link>
         );
     }
 }
