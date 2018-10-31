@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchSeries } from '../../actions';
 import SerieList from '../Common/ListItem';
+import PrivateRoute from '../Common/PrivateRoute';
 
 class Serie extends Component {
     componentDidMount() {
@@ -38,4 +39,4 @@ const mapStateToProps = ({ serie }) => {
     return { series };
 }
 
-export default connect(mapStateToProps, { fetchSeries })(Serie);
+export default PrivateRoute(connect(mapStateToProps, { fetchSeries })(Serie));

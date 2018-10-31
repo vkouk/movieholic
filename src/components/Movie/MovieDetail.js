@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieItem from '../Common/SingleDetailItem';
 import { getMovie } from '../../actions';
+import PrivateRoute from '../Common/PrivateRoute';
 
 class MovieDetail extends Component {
     componentDidMount() {
@@ -19,4 +20,4 @@ const mapStateToProps = ({ movie }) => {
     return { movie };
 }
 
-export default connect(mapStateToProps, { getMovie })(MovieDetail);
+export default PrivateRoute(connect(mapStateToProps, { getMovie })(MovieDetail));
