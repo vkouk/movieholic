@@ -4,6 +4,10 @@ import { getProfile, updateProfile } from '../../actions';
 import ProfileForm from './ProfileForm';
 class Profile extends Component {
     componentDidMount() {
+        if (!this.props.isAuthenticated) {
+            this.props.history.push('/');
+        }
+
         this.props.getProfile(this.props.match.params.id);
     }
 
@@ -21,9 +25,9 @@ class Profile extends Component {
 }
 
 const mapStateToProps = ({ auth }) => {
-    const { user, error } = auth;
+    const { user, error, isAuthenticated } = auth;
 
-    return { user, error };
+    return { user, error, isAuthenticated };
 }
 
 export default connect(mapStateToProps, { getProfile, updateProfile })(Profile);

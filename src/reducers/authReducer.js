@@ -20,7 +20,7 @@ export default (state = initialState, action) => {
         case UPDATE_USER:
             return { ...state, user: action.payload, error: '' };
         case AUTH_ERROR:
-            return { ...state, error: action.payload, isAuthenticated: false };
+            return { ...state, error: action.payload };
         default:
             return state;
     }
