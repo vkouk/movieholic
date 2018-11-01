@@ -11,6 +11,8 @@ class Header extends Component {
     };
 
     render() {
+        const cartCount = ( this.props.cart.movie ? this.props.cart.movie.length : 0) + ( this.props.cart.serie ? this.props.cart.serie.length : 0 );
+
         return (
             <header className="header">
                 <div className="header__content">
@@ -28,7 +30,7 @@ class Header extends Component {
                             <Link to={"/series"}>Series</Link>
                         </li>
                         <li className="header__menu__item">
-                            <Link to={"/cart"}>Cart</Link>
+                            <Link className={ cartCount >= 1 ? null : 'is-disabled' } to={"/cart"}>Cart - {cartCount} Items</Link>
                         </li>
                         {
                             this.props.user.isAdmin ?
@@ -55,10 +57,11 @@ class Header extends Component {
     }
 }
 
-const mapStateToProps = ({ auth }) => {
+const mapStateToProps = ({ auth, rent }) => {
     const { isAuthenticated, user } = auth;
+    const { cart } = rent;
 
-    return { isAuthenticated, user };
+    return { isAuthenticated, user, cart };
 }
 
 export default connect(mapStateToProps, { logoutUser })(Header);

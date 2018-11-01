@@ -11,7 +11,7 @@ export default ({ genre, plot, poster, released, stock, title, user, onButtonCli
                         </div>
                         <img src={poster} className="w-100 db" alt={title} />
                         <div className="pa3">
-                            <button onClick={e => onButtonClick(e, user._id)}><span>{title}</span></button>
+                            <button onClick={onButtonClick}><span>{title}</span></button>
                             <small className="gray db pv2">Released {released} - {stock} left in stock</small>
                         </div>
                     </article>

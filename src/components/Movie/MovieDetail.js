@@ -1,18 +1,27 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieItem from '../Common/SingleDetailItem';
-import { getMovie, storeRent } from '../../actions';
+import { getMovie, addToCart } from '../../actions';
 import PrivateRoute from '../Common/PrivateRoute';
+import _ from 'lodash';
 
 class MovieDetail extends Component {
     componentDidMount() {
         this.props.getMovie(this.props.match.params.title);
     }
 
-    onButtonClick = (e, userId) => {
+    onButtonClick = e => {
         e.preventDefault();
+        const duplicatedMovies = () => ( this.props.cart.movie ? this.props.cart.movie.some(movie => movie._id === this.props.movie.movie._id) : false );
 
-        this.props.storeRent(userId);
+        if (!_.isEmpty(this.props.cart.movie) && Object.keys(this.props.cart.movie).length >= 1) {
+            if (duplicatedMovies())
+                return;
+
+            this.props.addToCart({ ...this.props.cart, movie: [...this.props.cart.movie, this.props.movie.movie] });
+        } else {
+            this.props.addToCart({ ...this.props.cart, movie: [this.props.movie.movie] });
+        }
     };
 
     render() {
@@ -26,10 +35,11 @@ class MovieDetail extends Component {
     }
 }
 
-const mapStateToProps = ({ movie, auth }) => {
+const mapStateToProps = ({ movie, auth, rent }) => {
     const { user } = auth;
+    const { cart } = rent;
 
-    return { movie, user };
+    return { movie, user, cart };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getMovie, storeRent })(MovieDetail));
+export default PrivateRoute(connect(mapStateToProps, { getMovie, addToCart })(MovieDetail));

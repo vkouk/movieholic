@@ -33,3 +33,9 @@ $lightred: #C33325;
     letter-spacing: 1.5px;
     transition: all .6s linear;
 }
+
+// Selectors
+.is-disabled {
+    pointer-events: none;
+    opacity: .5;
+}
