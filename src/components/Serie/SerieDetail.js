@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SerieItem from '../Common/SingleDetailItem';
-import { getSerie, addToCart } from '../../actions';
+import { getSerie, addToCart, cartTotalAmount } from '../../actions';
 import PrivateRoute from '../Common/PrivateRoute';
+import { cartTotal } from '../../utils/Helpers';
 import _ from 'lodash';
 
 class SerieDetail extends Component {
@@ -10,9 +11,13 @@ class SerieDetail extends Component {
         this.props.getSerie(this.props.match.params.title);
     }
 
+    componentDidUpdate() {
+        this.props.cartTotalAmount(cartTotal(this.props.cart.serie));
+    }
+
     onButtonClick = e => {
         e.preventDefault();
-        const duplicatedSeries = () => ( this.props.cart.serie ? this.props.cart.serie.some(serie => serie._id === this.props.serie.serie._id) : false );
+        const duplicatedSeries = () => (this.props.cart.serie ? this.props.cart.serie.some(serie => serie._id === this.props.serie.serie._id) : false);
 
         if (!_.isEmpty(this.props.cart.serie) && Object.keys(this.props.cart.serie).length >= 1) {
             if (duplicatedSeries())
@@ -42,4 +47,4 @@ const mapStateToProps = ({ serie, auth, rent }) => {
     return { serie, user, cart };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getSerie, addToCart })(SerieDetail));
+export default PrivateRoute(connect(mapStateToProps, { getSerie, addToCart, cartTotalAmount })(SerieDetail));

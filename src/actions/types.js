@@ -10,6 +10,7 @@ export const FETCH_SERIES = 'fetch_series';
 export const GET_SERIE = 'get_serie';
 
 export const ADD_TO_CART = 'add_to_cart';
+export const CALCULATE_CART_TOTAL = 'calculate_cart_total';
 export const GET_CART = 'get_cart';
 export const STORE_RENT = 'store_rent';
 

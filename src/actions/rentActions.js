@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Config } from '../utils/Config';
 import {
-    STORE_RENT, ADD_TO_CART, GET_CART
+    STORE_RENT, ADD_TO_CART, GET_CART, CALCULATE_CART_TOTAL
 } from './types';
 
 export const storeRent = userId => async dispatch => {
@@ -18,4 +18,8 @@ export const addToCart = cartValues => async dispatch => {
 
 export const getCart = () => async dispatch => {
     dispatch({ type: GET_CART });
+};
+
+export const cartTotalAmount = total => async dispatch => {
+    dispatch({ type: CALCULATE_CART_TOTAL, payload: total });
 };

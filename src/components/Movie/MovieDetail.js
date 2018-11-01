@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieItem from '../Common/SingleDetailItem';
-import { getMovie, addToCart } from '../../actions';
+import { getMovie, addToCart, cartTotalAmount } from '../../actions';
 import PrivateRoute from '../Common/PrivateRoute';
+import { cartTotal } from '../../utils/Helpers';
 import _ from 'lodash';
 
 class MovieDetail extends Component {
@@ -10,9 +11,13 @@ class MovieDetail extends Component {
         this.props.getMovie(this.props.match.params.title);
     }
 
+    componentDidUpdate() {
+        this.props.cartTotalAmount(cartTotal(this.props.cart.movie));
+    }
+
     onButtonClick = e => {
         e.preventDefault();
-        const duplicatedMovies = () => ( this.props.cart.movie ? this.props.cart.movie.some(movie => movie._id === this.props.movie.movie._id) : false );
+        const duplicatedMovies = () => (this.props.cart.movie ? this.props.cart.movie.some(movie => movie._id === this.props.movie.movie._id) : false);
 
         if (!_.isEmpty(this.props.cart.movie) && Object.keys(this.props.cart.movie).length >= 1) {
             if (duplicatedMovies())
@@ -42,4 +47,4 @@ const mapStateToProps = ({ movie, auth, rent }) => {
     return { movie, user, cart };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getMovie, addToCart })(MovieDetail));
+export default PrivateRoute(connect(mapStateToProps, { getMovie, addToCart, cartTotalAmount })(MovieDetail));
