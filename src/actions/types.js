@@ -9,4 +9,6 @@ export const GET_MOVIE = 'get_movie';
 export const FETCH_SERIES = 'fetch_series';
 export const GET_SERIE = 'get_serie';
 
+export const STORE_RENT = 'store_rent';
+
 export const FETCH_ERROR = 'fetch_error';

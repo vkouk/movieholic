@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ genre, plot, poster, released, stock, title }) => {
+export default ({ genre, plot, poster, released, stock, title, user, onButtonClick }) => {
     return (
         <div className='container-fluid'>
             <div className='row'>
@@ -11,7 +11,7 @@ export default ({ genre, plot, poster, released, stock, title }) => {
                         </div>
                         <img src={poster} className="w-100 db" alt={title} />
                         <div className="pa3">
-                            <span>{title}</span>
+                            <button onClick={e => onButtonClick(e, user._id)}><span>{title}</span></button>
                             <small className="gray db pv2">Released {released} - {stock} left in stock</small>
                         </div>
                     </article>

@@ -11,13 +11,18 @@ class SerieDetail extends Component {
 
     render() {
         return (
-            <SerieItem {...this.props.serie.serie} />
+            <SerieItem
+                {...this.props.serie.serie}
+                user={this.props.user}
+            />
         );
     }
 }
 
-const mapStateToProps = ({ serie }) => {
-    return { serie };
+const mapStateToProps = ({ serie, auth }) => {
+    const { user } = auth;
+
+    return { serie, user };
 }
 
 export default PrivateRoute(connect(mapStateToProps, { getSerie })(SerieDetail));
