@@ -11,6 +11,7 @@ import Serie from '../components/Serie/Serie';
 import MovieDetail from '../components/Movie/MovieDetail';
 import SerieDetail from '../components/Serie/SerieDetail';
 import Cart from '../components/Cart/Cart';
+import ProfileOrdersDetail from '../components/Profile/ProfileOrdersDetail';
 
 export default () => {
     return (
@@ -26,6 +27,7 @@ export default () => {
                 <Route path="/serie/:title" component={SerieDetail} />
                 <Route path="/movie/:title" component={MovieDetail} />
                 <Route path="/cart" component={Cart} />
+                <Route path="/order/:id" component={ProfileOrdersDetail} />
                 <Footer />
             </div>
         </BrowserRouter>

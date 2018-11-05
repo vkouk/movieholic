@@ -7,7 +7,6 @@ export default ({ onOrderClick, onMovieCartRemove, onSerieCartRemove, error, car
         <div className="container cart">
             <div className="row">
                 <div className="col-sm-4 cart__list">
-                    <span className="b f3 bb">Movies in Cart</span>
                     {
                         cart.movie ? cart.movie.map(data => {
                             return (
@@ -21,7 +20,6 @@ export default ({ onOrderClick, onMovieCartRemove, onSerieCartRemove, error, car
                     }
                 </div>
                 <div className="col-sm-4 cart__list">
-                    <span className="b f3 bb">Series in Cart</span>
                     {
                         cart.serie ? cart.serie.map(data => {
                             return (

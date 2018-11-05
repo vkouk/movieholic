@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Config } from '../utils/Config';
 import {
-    ORDER_CART_ITEMS, ADD_TO_CART, GET_CART, CALCULATE_CART_TOTAL, ORDER_ERROR, GET_ORDER, GET_ORDERS, REMOVE_MOVIE_CART_ITEM, REMOVE_SERIE_CART_ITEM
+    ORDER_CART_ITEMS, ADD_TO_CART, GET_CART, CALCULATE_CART_TOTAL, ORDER_ERROR, GET_ORDER, GET_ORDERS, REMOVE_MOVIE_CART_ITEM, REMOVE_SERIE_CART_ITEM, GET_USER_ORDERS
 } from './types';
 
 export const storeRent = (rentValues, history) => async dispatch => {
@@ -22,6 +22,12 @@ export const getRents = () => async dispatch => {
 export const getRent = rentId => async dispatch => {
     await axios.get(`${Config.API_URL}/rent/${rentId}`)
         .then(({ data }) => dispatch({ type: GET_ORDER, payload: data }))
+        .catch(error => dispatch({ type: ORDER_ERROR, payload: error.response.data }));
+};
+
+export const getUserRents = userId => async dispatch => {
+    await axios.get(`${Config.API_URL}/rent/user/${userId}`)
+        .then(({ data }) => dispatch({ type: GET_USER_ORDERS, payload: data }))
         .catch(error => dispatch({ type: ORDER_ERROR, payload: error.response.data }));
 };
 

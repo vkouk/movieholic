@@ -15,6 +15,7 @@ export const GET_CART = 'get_cart';
 export const ORDER_CART_ITEMS = 'order_cart_items';
 export const GET_ORDER = 'get_order';
 export const GET_ORDERS = 'get_orders';
+export const GET_USER_ORDERS = 'get_user_orders';
 export const REMOVE_MOVIE_CART_ITEM = 'remove_movie_cart_item';
 export const REMOVE_SERIE_CART_ITEM = 'remove_serie_cart_item';
 export const ORDER_ERROR = 'order_error';
