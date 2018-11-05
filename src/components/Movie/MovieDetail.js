@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovieItem from '../Common/SingleDetailItem';
-import { getMovie, addToCart, cartTotalAmount } from '../../actions';
+import { getMovie, addToCart } from '../../actions';
 import PrivateRoute from '../Common/PrivateRoute';
-import { cartTotal } from '../../utils/Helpers';
 import _ from 'lodash';
 
 class MovieDetail extends Component {
     componentDidMount() {
         this.props.getMovie(this.props.match.params.title);
-    }
-
-    componentDidUpdate() {
-        this.props.cartTotalAmount(cartTotal(this.props.cart.movie));
     }
 
     onButtonClick = e => {
@@ -47,4 +42,4 @@ const mapStateToProps = ({ movie, auth, rent }) => {
     return { movie, user, cart };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getMovie, addToCart, cartTotalAmount })(MovieDetail));
+export default PrivateRoute(connect(mapStateToProps, { getMovie, addToCart })(MovieDetail));

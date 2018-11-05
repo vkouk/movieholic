@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SerieItem from '../Common/SingleDetailItem';
-import { getSerie, addToCart, cartTotalAmount } from '../../actions';
+import { getSerie, addToCart } from '../../actions';
 import PrivateRoute from '../Common/PrivateRoute';
-import { cartTotal } from '../../utils/Helpers';
 import _ from 'lodash';
 
 class SerieDetail extends Component {
     componentDidMount() {
         this.props.getSerie(this.props.match.params.title);
-    }
-
-    componentDidUpdate() {
-        this.props.cartTotalAmount(cartTotal(this.props.cart.serie));
     }
 
     onButtonClick = e => {
@@ -47,4 +42,4 @@ const mapStateToProps = ({ serie, auth, rent }) => {
     return { serie, user, cart };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getSerie, addToCart, cartTotalAmount })(SerieDetail));
+export default PrivateRoute(connect(mapStateToProps, { getSerie, addToCart })(SerieDetail));

@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
 import CartList from './CartList';
 import { connect } from 'react-redux';
-import { getCart, storeRent, removeMovieFromCart, removeSerieFromCart } from '../../actions';
+import { getCart, storeRent, removeMovieFromCart, removeSerieFromCart, cartTotalAmount } from '../../actions';
+import { cartTotal } from '../../utils/Helpers';
 import PrivateRoute from '../Common/PrivateRoute';
 
 class Cart extends Component {
     componentDidMount() {
         this.props.getCart();
+
+        const totalCost = cartTotal(this.props.cart.movie) + cartTotal(this.props.cart.serie);
+        this.props.cartTotalAmount(totalCost);
 
         if ((this.props.cart.movie && this.props.cart.movie.length <= 0) && (this.props.cart.serie && this.props.cart.serie.length <= 0)) {
             this.props.history.push('/');
@@ -17,6 +21,9 @@ class Cart extends Component {
         if ((this.props.cart.movie && this.props.cart.movie.length <= 0) && (this.props.cart.serie && this.props.cart.serie.length <= 0)) {
             this.props.history.push('/');
         }
+
+        const totalCost = cartTotal(this.props.cart.movie) + cartTotal(this.props.cart.serie);
+        this.props.cartTotalAmount(totalCost);
     }
 
     onSerieRemove = (e, serieId) => {
@@ -60,4 +67,4 @@ const mapStateToProps = ({ rent, auth }) => {
     return { cart, cartTotal, user, error };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getCart, storeRent, removeMovieFromCart, removeSerieFromCart })(Cart));
+export default PrivateRoute(connect(mapStateToProps, { getCart, storeRent, removeMovieFromCart, removeSerieFromCart, cartTotalAmount })(Cart));
