@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { Config } from '../utils/Config';
 import {
-    ORDER_CART_ITEMS, ADD_TO_CART, GET_CART, CALCULATE_CART_TOTAL, ORDER_ERROR, GET_ORDER, GET_ORDERS
+    ORDER_CART_ITEMS, ADD_TO_CART, GET_CART, CALCULATE_CART_TOTAL, ORDER_ERROR, GET_ORDER, GET_ORDERS, REMOVE_MOVIE_CART_ITEM, REMOVE_SERIE_CART_ITEM
 } from './types';
 
 export const storeRent = (rentValues, history) => async dispatch => {
     await axios.post(`${Config.API_URL}/rent`, rentValues)
-        .then(({ data }) => {
+        .then(() => {
             dispatch({ type: ORDER_CART_ITEMS });
             history.push('/');
         })
@@ -35,4 +35,12 @@ export const getCart = () => async dispatch => {
 
 export const cartTotalAmount = total => async dispatch => {
     dispatch({ type: CALCULATE_CART_TOTAL, payload: total });
+};
+
+export const removeMovieFromCart = movieId => async dispatch => {
+    dispatch({ type: REMOVE_MOVIE_CART_ITEM, payload: movieId });
+};
+
+export const removeSerieFromCart = serieId => async dispatch => {
+    dispatch({ type: REMOVE_SERIE_CART_ITEM, payload: serieId });
 };

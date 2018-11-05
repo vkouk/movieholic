@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default ({ genre, plot, poster, released, stock, title, user, onButtonClick }) => {
+export default ({ genre, poster, released, stock, title, onButtonClick }) => {
     return (
         <div className='container-fluid'>
             <div className='row'>

@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
+import CartList from './CartList';
 import { connect } from 'react-redux';
-import { getCart, storeRent } from '../../actions';
+import { getCart, storeRent, removeMovieFromCart, removeSerieFromCart } from '../../actions';
 import PrivateRoute from '../Common/PrivateRoute';
 
 class Cart extends Component {
     componentDidMount() {
         this.props.getCart();
+
+        if ((this.props.cart.movie && this.props.cart.movie.length <= 0) && (this.props.cart.serie && this.props.cart.serie.length <= 0)) {
+            this.props.history.push('/');
+        }
     }
+
+    componentDidUpdate() {
+        if ((this.props.cart.movie && this.props.cart.movie.length <= 0) && (this.props.cart.serie && this.props.cart.serie.length <= 0)) {
+            this.props.history.push('/');
+        }
+    }
+
+    onSerieRemove = (e, serieId) => {
+        e.preventDefault();
+
+        this.props.removeSerieFromCart(serieId);
+    };
+
+    onMovieRemove = (e, movieId) => {
+        e.preventDefault();
+
+        this.props.removeMovieFromCart(movieId);
+    };
 
     onButtonClick = e => {
         e.preventDefault();
@@ -19,10 +42,13 @@ class Cart extends Component {
 
     render() {
         return (
-            <div>
-                <button onClick={this.onButtonClick}>Order</button>
-                <div>{this.props.eror}</div>
-            </div>
+            <CartList
+                onOrderClick={this.onButtonClick}
+                onMovieCartRemove={this.onMovieRemove}
+                onSerieCartRemove={this.onSerieRemove}
+                cart={this.props.cart}
+                error={this.props.eror}
+            />
         );
     }
 }
@@ -34,4 +60,4 @@ const mapStateToProps = ({ rent, auth }) => {
     return { cart, cartTotal, user, error };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getCart, storeRent })(Cart));
+export default PrivateRoute(connect(mapStateToProps, { getCart, storeRent, removeMovieFromCart, removeSerieFromCart })(Cart));

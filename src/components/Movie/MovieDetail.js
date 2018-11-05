@@ -23,7 +23,7 @@ class MovieDetail extends Component {
             if (duplicatedMovies())
                 return;
 
-            this.props.addToCart({ ...this.props.cart, movie: [...this.props.cart.movie, this.props.movie.movie] });
+            this.props.addToCart({ ...this.props.cart, movie: [this.props.movie.movie, ...this.props.cart.movie] });
         } else {
             this.props.addToCart({ ...this.props.cart, movie: [this.props.movie.movie] });
         }

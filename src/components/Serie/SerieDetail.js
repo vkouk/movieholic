@@ -23,7 +23,7 @@ class SerieDetail extends Component {
             if (duplicatedSeries())
                 return;
 
-            this.props.addToCart({ ...this.props.cart, serie: [...this.props.cart.serie, this.props.serie.serie] });
+            this.props.addToCart({ ...this.props.cart, serie: [this.props.serie.serie, ...this.props.cart.serie] });
         } else {
             this.props.addToCart({ ...this.props.cart, serie: [this.props.serie.serie] });
         }

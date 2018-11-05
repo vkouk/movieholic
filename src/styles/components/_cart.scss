@@ -1,0 +1,10 @@
+.cart {
+    &__item:hover {
+        cursor: pointer;
+    }
+
+    &__error {
+        color: $lightred;
+        font-weight: 700;
+    }
+}
