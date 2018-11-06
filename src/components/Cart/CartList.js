@@ -36,7 +36,7 @@ export default ({ onOrderClick, onMovieCartRemove, onSerieCartRemove, error, car
                     <button onClick={onOrderClick}>Order</button>
                 </div>
                 <div className="col-sm-12">
-                    {error && <div className="cart_error">{error}</div>}
+                    {error && <div className="cart__error">{error}</div>}
                 </div>
             </div>
         </div>

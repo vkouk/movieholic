@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import CartList from './CartList';
 import { connect } from 'react-redux';
-import { getCart, storeRent, removeMovieFromCart, removeSerieFromCart, cartTotalAmount } from '../../actions';
-import { cartTotal } from '../../utils/Helpers';
+import { getCart, storeRent, removeMovieFromCart, removeSerieFromCart } from '../../actions';
 import PrivateRoute from '../Common/PrivateRoute';
 
 class Cart extends Component {
     componentDidMount() {
         this.props.getCart();
 
-        const totalCost = cartTotal(this.props.cart.movie) + cartTotal(this.props.cart.serie);
-        this.props.cartTotalAmount(totalCost);
-
         if ((this.props.cart.movie && this.props.cart.movie.length <= 0) && (this.props.cart.serie && this.props.cart.serie.length <= 0)) {
+            this.props.history.push('/');
+        } else if (!this.props.isAuthenticated) {
             this.props.history.push('/');
         }
     }
@@ -21,9 +19,6 @@ class Cart extends Component {
         if ((this.props.cart.movie && this.props.cart.movie.length <= 0) && (this.props.cart.serie && this.props.cart.serie.length <= 0)) {
             this.props.history.push('/');
         }
-
-        const totalCost = cartTotal(this.props.cart.movie) + cartTotal(this.props.cart.serie);
-        this.props.cartTotalAmount(totalCost);
     }
 
     onSerieRemove = (e, serieId) => {
@@ -54,7 +49,7 @@ class Cart extends Component {
                 onMovieCartRemove={this.onMovieRemove}
                 onSerieCartRemove={this.onSerieRemove}
                 cart={this.props.cart}
-                error={this.props.eror}
+                error={this.props.error}
             />
         );
     }
@@ -62,9 +57,9 @@ class Cart extends Component {
 
 const mapStateToProps = ({ rent, auth }) => {
     const { cart, cartTotal, error } = rent;
-    const { user } = auth;
+    const { user, isAuthenticated } = auth;
 
-    return { cart, cartTotal, user, error };
+    return { cart, cartTotal, user, isAuthenticated, error };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { getCart, storeRent, removeMovieFromCart, removeSerieFromCart, cartTotalAmount })(Cart));
+export default PrivateRoute(connect(mapStateToProps, { getCart, storeRent, removeMovieFromCart, removeSerieFromCart })(Cart));
