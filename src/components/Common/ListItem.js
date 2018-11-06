@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import Item from './Item';
+import Pagination from "./Pagination";
 
 class ListItem extends Component {
     state = {
         'title': '',
-        'error': ''
+        'error': '',
+        'currentPage': null,
+        'totalPages': null,
+        'currentData': this.props.data
     };
 
     onFieldChange = e => {
@@ -13,7 +17,25 @@ class ListItem extends Component {
         this.setState({ [e.target.name]: e.target.value });
     };
 
+    onPageChanged = data => {
+        const { currentPage, totalPages, pageLimit } = data;
+
+        const offset = (currentPage - 1) * pageLimit;
+        const currentData = this.props.data.slice(offset, offset + pageLimit);
+        this.setState({ currentPage, totalPages, currentData });
+    };
+
     render() {
+        const {
+            currentPage,
+            totalPages,
+            currentData,
+            title
+        } = this.state;
+        const totalData = this.props.data.length;
+
+        if (totalData === 0) return null;
+
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -32,7 +54,7 @@ class ListItem extends Component {
                         </div>
                     </div>
                     {
-                        this.props.data.filter(rec => rec.title.toLowerCase().search(this.state.title.toLowerCase()) !== -1).sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0).map(record => {
+                        currentData.filter(rec => rec.title.toLowerCase().search(title.toLowerCase()) !== -1).sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0).map(record => {
                             return (
                                 <Item
                                     key={record._id}
@@ -41,6 +63,22 @@ class ListItem extends Component {
                                 />
                             )
                         })}
+                    <div className="col-sm-12 d-flex align-items-center justify-content-center">
+                        {currentPage && (
+                            <span className="text-secondary">
+                                Page <span className="font-weight-bold">{currentPage}</span> /{" "}
+                                <span className="font-weight-bold">{totalPages}</span>
+                            </span>
+                        )}
+                        <div className="d-flex flex-row align-items-center">
+                            <Pagination
+                                totalRecords={totalData}
+                                pageLimit={12}
+                                pageNeighbours={1}
+                                onPageChanged={this.onPageChanged}
+                            />
+                        </div>
+                    </div>
                 </div>
             </div>
         );
