@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Config } from '../../utils/Config';
 import axios from 'axios';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 class Search extends Component {
     state = {
         'title': '',
@@ -31,6 +32,10 @@ class Search extends Component {
         const { dataType, title, year } = this.state;
         const endpoint = dataType === 'Movie' ? `${Config.API_URL}/movie` : `${Config.API_URL}/serie`;
         const values = dataType === 'Movie' ? { title, year } : { title };
+
+        if (dataType === null) {
+            return this.setState({ error: 'Please select Movie or Serie type before search' });
+        }
 
         await axios.post(endpoint, values)
             .then(({ data }) => {
