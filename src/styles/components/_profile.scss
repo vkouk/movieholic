@@ -1,20 +1,17 @@
 .profile__icon {
     &__btn {
-        color: $darkblue;
+        color: $white;
         background-color: transparent;
         border-color: transparent;
         &:not(:disabled):not(.disabled):active:focus, &:hover, &:active, .show > .btn-secondary.dropdown-toggle {
             box-shadow: none;
-            color: $darkblue;
+            color: $white;
             background-color: transparent;
             border-color: transparent;
         }
     }
 
     > .show > .btn-secondary.dropdown-toggle {
-        border: none;
-        box-shadow: none;
-        color: $darkblue;
         background-color: transparent;
         border-color: transparent;
     }
@@ -22,5 +19,11 @@
     > .dropdown-item.active, .dropdown-item:active {
         background-color: transparent;
         outline: none;
+    }
+
+    &__dropdown {
+       .header__menu__item > a {
+            color: $darkblue;
+        }
     }
 }

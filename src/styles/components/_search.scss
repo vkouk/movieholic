@@ -24,13 +24,19 @@
         padding: 4px 15px;
         margin: 0 10px;
         border-radius: 50px;
-        &:not(:disabled):not(.disabled):active:focus, &:hover, &:focus, &:active {
+        &:not(:disabled):not(.disabled):active:focus, &:hover, &:focus, &:active, .show > .btn-secondary.dropdown-toggle {
             box-shadow: none;
             border: 2px solid $turquoise;
             background: transparent;
             background-color: transparent;
             color: $turquoise;
+            outline: none;
         }
+    }
+    > .dropdown-item.active, .dropdown-item:active {
+        background-color: transparent;
+        border: 2px solid $turquoise;
+        outline: none;
     }
 
     &__error {
@@ -38,4 +44,17 @@
         color: $lightred;
         font-weight: 700;
     }
+}
+
+.show > .btn-secondary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.show > .btn-secondary.dropdown-toggle {
+    border: none;
+    outline: none;
+    box-shadow: none;
+    color: $darkblue;
+    background-color: transparent;
+    border: 2px solid $turquoise;
 }

@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
 import { Link } from 'react-router-dom';
 import ProfileIcon from '../Profile/ProfileIcon';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 class Header extends Component {
     onLogout = e => {
@@ -31,7 +33,12 @@ class Header extends Component {
                             <Link to={"/series"}>Series</Link>
                         </li>
                         <li className="header__menu__item">
-                            <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"}>Cart - {cartCount} Items</Link>
+                            <div className="header__cart">
+                                <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"}>
+                                    <FontAwesomeIcon icon={faShoppingCart} className="fa-lg header__cart__icon" />
+                                    <div className="header__cart__count">{cartCount}</div>
+                                </Link>
+                            </div>
                         </li>
                         {
                             this.props.user.isAdmin ?
