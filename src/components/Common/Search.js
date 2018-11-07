@@ -83,8 +83,8 @@ class Search extends Component {
                         </DropdownMenu>
                     </ButtonDropdown>
                     <input className="search__submit" type="submit" />
-                    {this.state.error && <p className="search__error">{this.state.error}</p>}
                 </form>
+                {this.state.error && <p className="search__error">{this.state.error}</p>}
             </div>
         );
     }

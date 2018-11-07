@@ -63,9 +63,9 @@ class ListItem extends Component {
                                 />
                             )
                         })}
-                    <div className="col-sm-12 d-flex align-items-center justify-content-center">
+                    <div className="col-sm-12 d-flex align-items-center justify-content-center flex-column">
                         {currentPage && (
-                            <span className="text-secondary">
+                            <span className="text-secondary mb-2">
                                 Page <span className="font-weight-bold">{currentPage}</span> /{" "}
                                 <span className="font-weight-bold">{totalPages}</span>
                             </span>

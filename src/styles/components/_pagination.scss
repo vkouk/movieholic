@@ -1,0 +1,12 @@
+.page-item {
+    &.active {
+        .page-link {
+            background-color: $turquoise;
+            border-color: $turquoise;
+        }
+    }
+}
+
+.page-link {
+    color: $turquoise;
+}

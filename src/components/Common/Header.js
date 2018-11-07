@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
 import { Link } from 'react-router-dom';
+import ProfileIcon from '../Profile/ProfileIcon';
 
 class Header extends Component {
     onLogout = e => {
@@ -11,7 +12,7 @@ class Header extends Component {
     };
 
     render() {
-        const cartCount = ( this.props.cart.movie ? this.props.cart.movie.length : 0) + ( this.props.cart.serie ? this.props.cart.serie.length : 0 );
+        const cartCount = (this.props.cart.movie ? this.props.cart.movie.length : 0) + (this.props.cart.serie ? this.props.cart.serie.length : 0);
 
         return (
             <header className="header">
@@ -30,7 +31,7 @@ class Header extends Component {
                             <Link to={"/series"}>Series</Link>
                         </li>
                         <li className="header__menu__item">
-                            <Link className={ cartCount >= 1 ? null : 'is-disabled' } to={"/cart"}>Cart - {cartCount} Items</Link>
+                            <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"}>Cart - {cartCount} Items</Link>
                         </li>
                         {
                             this.props.user.isAdmin ?
@@ -39,16 +40,12 @@ class Header extends Component {
                                 </li>
                                 : null
                         }
-                        <li className="header__menu__item">
-                            {
-                                this.props.isAuthenticated ? <a href="javascript:void(0)" onClick={this.onLogout}>Logout</a> : <Link to={"/register"}>Register</Link>
-                            }
-                        </li>
                         {
-                            this.props.isAuthenticated ? null :
-                                <li className="header__menu__item">
-                                    <Link to={"/login"}>Login</Link>
-                                </li>
+                            <ProfileIcon
+                                {...this.props.user}
+                                isAuthenticated={this.props.isAuthenticated}
+                                onLogout={this.onLogout}
+                            />
                         }
                     </ul>
                 </div>

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { fetchSeries } from '../../actions';
 import SerieList from '../Common/ListItem';
 import PrivateRoute from '../Common/PrivateRoute';
+import Spinner from '../Common/Spinner';
 
 class Serie extends Component {
     componentDidMount() {
@@ -15,7 +16,7 @@ class Serie extends Component {
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-sm-12 text-center pt-2">
-                            <p>No content found.</p>
+                            <Spinner />
                         </div>
                     </div>
                 </div>
