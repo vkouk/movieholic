@@ -20,7 +20,7 @@ class Header extends Component {
             <header className="header">
                 <div className="header__content">
                     <div className="header__logo">
-                        <img src="./images/logo.png" alt="Movieholic Logo" />
+                        <Link to={'/'}><img src="./images/logo.png" alt="Movieholic Logo" /></Link>
                     </div>
                     <ul className="header__menu">
                         <li className="header__menu__item">

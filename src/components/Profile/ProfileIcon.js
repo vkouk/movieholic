@@ -18,7 +18,7 @@ class ProfileIcon extends Component {
             <div className="profile__icon">
                 <ButtonDropdown className="profile__icon__dropdown" isOpen={this.state.dropdownOpen} toggle={this.onDropdownToggle}>
                     <DropdownToggle caret className="profile__icon__btn">
-                        <img src={this.props.avatar ? this.props.avatar : 'https://cdn4.iconfinder.com/data/icons/mobile-aplication-web-development/842/user_blank-512.png'} className="br4 w2 dib" alt={this.props.username} />
+                        <img src={this.props.avatar ? this.props.avatar : 'https://cdn4.iconfinder.com/data/icons/mobile-aplication-web-development/842/user_blank-512.png'} className="br4 w2 dib" alt={this.props.username} /> {this.props.username}
                     </DropdownToggle>
                     <DropdownMenu>
                         {

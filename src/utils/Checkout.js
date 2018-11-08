@@ -17,7 +17,7 @@ class Checkout extends React.Component {
                 name="Movieholic"
                 description="€5 for 5 email credits"
                 amount={500}
-                token={'() => localStorage.getItem('token')'}
+                token={() => localStorage.getItem('token')}
                 stripeKey={Config.STRIPE_KEY}
             >
                 <button className="btn">
