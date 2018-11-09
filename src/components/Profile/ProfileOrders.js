@@ -10,7 +10,7 @@ export default ({ orders }) => {
             </div>
             <div className="col-sm-12">
                 {
-                    orders.length >= 1 ? orders.sort((a, b) => moment(a.dateOrdered).format('DD/MM/YYYY HH:MM') !== moment(b.dateOrdered).format('DD/MM/YYYY HH:MM') ? moment(a.dateOrdered).format('DD/MM/YYYY HH:MM') > moment(b.dateOrdered).format('DD/MM/YYYY HH:MM') ? -1 : 1 : 0).map(order => {
+                    orders && orders.length >= 1 ? orders.sort((a, b) => moment(a.dateOrdered).format('DD/MM/YYYY HH:MM') !== moment(b.dateOrdered).format('DD/MM/YYYY HH:MM') ? moment(a.dateOrdered).format('DD/MM/YYYY HH:MM') > moment(b.dateOrdered).format('DD/MM/YYYY HH:MM') ? -1 : 1 : 0).map(order => {
                         return (
                             <article key={order._id} className="dt w-100 bb b--black-05 pb2 mt2" href="#0">
                                 <div className="dtc w2 w3-ns v-mid">
