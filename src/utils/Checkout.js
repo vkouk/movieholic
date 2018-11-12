@@ -5,19 +5,15 @@ import { Config } from './Config';
 import { addUserBalance } from '../actions';
 
 class AddBalance extends React.Component {
-    state = {
-        amount: 500
-    };
-
     render() {
-        const { amount } = this.state;
+        const { userId } = this.props;
 
         return (
             <StripeCheckout
                 name="Movieholic"
-                description={`€${amount} for deposit`}
-                amount={amount}
-                token={data => this.props.addUserBalance({ amount, id: data.id, userId: this.props.userId })}
+                description={`€${parseInt(this.props.amount)} for deposit`}
+                amount={parseInt(this.props.amount) * 100}
+                token={({ id }) => this.props.addUserBalance({ amount: parseInt(this.props.amount), id, userId })}
                 stripeKey={Config.STRIPE_KEY}
             >
                 <button className="btn">

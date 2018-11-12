@@ -4,13 +4,14 @@ import Checkout from '../../utils/Checkout';
 class ProfileForm extends Component {
     state = {
         "email": this.props.email,
-        "username": this.props.username
+        "username": this.props.username,
+        "amount": 0
     }
 
     onFormUpdate = e => {
         e.preventDefault();
 
-        this.props.onFormSubmit(this.state);
+        this.props.onFormSubmit({ email: this.state.email, username: this.state.username });
     };
 
     onFormChange = e => {
@@ -37,10 +38,21 @@ class ProfileForm extends Component {
                         onChange={this.onFormChange}
                         placeholder="Username..."
                     />
+                    <input
+                        className="form__input"
+                        type="number"
+                        name="amount"
+                        value={this.state.amount}
+                        onChange={this.onFormChange}
+                        placeholder="Add Balance Amount..."
+                    />
                     <input className="form__submit" type="submit" />
                     {this.props.error && <p className="form__error">{this.props.error}</p>}
                 </form>
-                <Checkout userId={this.props._id} />
+                <Checkout
+                    userId={this.props._id}
+                    amount={this.state.amount}
+                />
             </div>
         );
     }
