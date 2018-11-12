@@ -41,3 +41,13 @@ export const updateProfile = (profileValues, id) => async dispatch => {
         .then(({ data }) => dispatch({ type: UPDATE_USER, payload: data }))
         .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
 };
+
+export const addUserBalance = values => async dispatch => {
+    await axios.post(`${Config.API_URL}/user/addbalance`, values)
+        .then(({ data }) => {
+            //TODO: Update user's data.
+            //dispatch({ type: UPDATE_USER, payload: data })
+            console.log(data)
+        })
+        .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
+};

@@ -1,31 +1,31 @@
-import React from 'react'
+import React from 'react';
+import { connect } from 'react-redux';
 import StripeCheckout from 'react-stripe-checkout';
 import { Config } from './Config';
+import { addUserBalance } from '../actions';
 
-class Checkout extends React.Component {
-    onToken = (token, addresses) => {
-        // TODO: Send the token information and any other
-        // relevant information to your payment process
-        // server, wait for the response, and update the UI
-        // accordingly. How this is done is up to you. Using
-        // XHR, fetch, or a GraphQL mutation is typical.
+class AddBalance extends React.Component {
+    state = {
+        amount: 500
     };
 
     render() {
+        const { amount } = this.state;
+
         return (
             <StripeCheckout
                 name="Movieholic"
-                description="€5 for 5 email credits"
-                amount={500}
-                token={() => localStorage.getItem('token')}
+                description={`€${amount} for deposit`}
+                amount={amount}
+                token={data => this.props.addUserBalance({ amount, id: data.id, userId: this.props.userId })}
                 stripeKey={Config.STRIPE_KEY}
             >
                 <button className="btn">
-                    Add Credits
+                    Add Balance
                 </button>
             </StripeCheckout>
         )
     }
 }
 
-export default Checkout;
+export default connect(null, { addUserBalance })(AddBalance);

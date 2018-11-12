@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Checkout from '../../utils/Checkout';
 
 class ProfileForm extends Component {
     state = {
@@ -39,6 +40,7 @@ class ProfileForm extends Component {
                     <input className="form__submit" type="submit" />
                     {this.props.error && <p className="form__error">{this.props.error}</p>}
                 </form>
+                <Checkout userId={this.props._id} />
             </div>
         );
     }
