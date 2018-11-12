@@ -11,10 +11,12 @@ class AddBalance extends React.Component {
         return (
             <StripeCheckout
                 name="Movieholic"
+                currency="EUR"
                 description={`€${parseInt(this.props.amount)} for deposit`}
                 amount={parseInt(this.props.amount) * 100}
                 token={({ id }) => this.props.addUserBalance({ amount: parseInt(this.props.amount), id, userId })}
                 stripeKey={Config.STRIPE_KEY}
+                image="http://movieholic.herokuapp.com/images/logo.png"
             >
                 <button className="btn">
                     Add Balance
