@@ -18,43 +18,45 @@ class Header extends Component {
 
         return (
             <header className="header">
-                <div className="header__content">
-                    <div className="header__logo">
-                        <Link to={'/'}><img src="./images/logo.png" alt="Movieholic Logo" /></Link>
+                <div className="header__overlay">
+                    <div className="header__content">
+                        <div className="header__logo">
+                            <Link to={'/'}><img src="./images/logo.png" alt="Movieholic Logo" /></Link>
+                        </div>
+                        <ul className="header__menu">
+                            <li className="header__menu__item">
+                                <Link to={"/"}>Home</Link>
+                            </li>
+                            <li className="header__menu__item">
+                                <Link to={"/movies"}>Movies</Link>
+                            </li>
+                            <li className="header__menu__item">
+                                <Link to={"/series"}>Series</Link>
+                            </li>
+                            <li className="header__menu__item">
+                                <div className="header__cart">
+                                    <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"}>
+                                        <FontAwesomeIcon icon={faShoppingCart} className="fa-lg header__cart__icon" />
+                                        <div className="header__cart__count">{cartCount}</div>
+                                    </Link>
+                                </div>
+                            </li>
+                            {
+                                this.props.user.isAdmin ?
+                                    <li className="header__menu__item">
+                                        <Link to={"/dashboard"}>Dashboard</Link>
+                                    </li>
+                                    : null
+                            }
+                            {
+                                <ProfileIcon
+                                    {...this.props.user}
+                                    isAuthenticated={this.props.isAuthenticated}
+                                    onLogout={this.onLogout}
+                                />
+                            }
+                        </ul>
                     </div>
-                    <ul className="header__menu">
-                        <li className="header__menu__item">
-                            <Link to={"/"}>Home</Link>
-                        </li>
-                        <li className="header__menu__item">
-                            <Link to={"/movies"}>Movies</Link>
-                        </li>
-                        <li className="header__menu__item">
-                            <Link to={"/series"}>Series</Link>
-                        </li>
-                        <li className="header__menu__item">
-                            <div className="header__cart">
-                                <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"}>
-                                    <FontAwesomeIcon icon={faShoppingCart} className="fa-lg header__cart__icon" />
-                                    <div className="header__cart__count">{cartCount}</div>
-                                </Link>
-                            </div>
-                        </li>
-                        {
-                            this.props.user.isAdmin ?
-                                <li className="header__menu__item">
-                                    <Link to={"/dashboard"}>Dashboard</Link>
-                                </li>
-                                : null
-                        }
-                        {
-                            <ProfileIcon
-                                {...this.props.user}
-                                isAuthenticated={this.props.isAuthenticated}
-                                onLogout={this.onLogout}
-                            />
-                        }
-                    </ul>
                 </div>
             </header>
         );
