@@ -50,3 +50,9 @@ export const removeMovieFromCart = movieId => async dispatch => {
 export const removeSerieFromCart = serieId => async dispatch => {
     dispatch({ type: REMOVE_SERIE_CART_ITEM, payload: serieId });
 };
+
+export const returnRent = (returnValues, history) => async dispatch => {
+    await axios.post(`${Config.API_URL}/rent/return`, returnValues)
+        .then(() => history.push('/'))
+        .catch(error => dispatch({ type: ORDER_ERROR, payload: error.response.data }));
+};

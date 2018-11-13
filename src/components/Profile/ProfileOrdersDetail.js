@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PrivateRoute from '../Common/PrivateRoute';
 import { connect } from 'react-redux';
 import { getRent } from '../../actions';
+import { returnRentProductCost } from '../../utils/Helpers';
 
 class ProfileOrdersDetail extends Component {
     componentDidMount() {
@@ -24,7 +25,7 @@ class ProfileOrdersDetail extends Component {
                                                 <span className="f6 db black-70">{movie.genre}</span>
                                             </div>
                                             <div>
-                                                <span href="tel:" className="f6 link blue">Rating: {movie.rating ? movie.rating : 'N/A'}</span>
+                                                <span href="tel:" className="f6 link blue">Price:: {movie.rating ? returnRentProductCost(movie.rating, this.props.order.dateOrdered) : 0}</span>
                                             </div>
                                         </li>
                                     )
@@ -44,7 +45,7 @@ class ProfileOrdersDetail extends Component {
                                                 <span className="f6 db black-70">{serie.genre}</span>
                                             </div>
                                             <div>
-                                                <span href="tel:" className="f6 link blue">Rating: {serie.rating ? serie.rating : 'N/A'}</span>
+                                                <span href="tel:" className="f6 link blue">Price:: {serie.rating ? returnRentProductCost(serie.rating, this.props.order.dateOrdered) : 0}</span>
                                             </div>
                                         </li>
                                     )

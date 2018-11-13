@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Checkout from '../../utils/Checkout';
+import AddBalance from '../../utils/AddBalance';
 
 class ProfileForm extends Component {
     state = {
@@ -49,7 +49,7 @@ class ProfileForm extends Component {
                     <input className="form__submit" type="submit" />
                     {this.props.error && <p className="form__error">{this.props.error}</p>}
                 </form>
-                <Checkout
+                <AddBalance
                     userId={this.props._id}
                     amount={this.state.amount}
                 />

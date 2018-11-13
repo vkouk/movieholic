@@ -27,7 +27,7 @@ export default (state = initialState, action) => {
         case CALCULATE_CART_TOTAL:
             return { ...state, cartTotal: action.payload };
         case GET_CART:
-            return { ...state, ...state.cart };
+            return { ...state, cart: { ...state.cart } };
         case ORDER_CART_ITEMS:
             return { ...state, cart: {}, cartTotal: 0, error: '' };
         case GET_ORDER:

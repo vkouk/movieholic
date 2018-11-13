@@ -32,6 +32,7 @@ class Profile extends Component {
                         <ProfileOrders
                             orders={this.props.userOrders}
                             error={this.props.error}
+                            navigation={this.props.history}
                         />
                     </div>
                 </div>

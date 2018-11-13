@@ -1,8 +1,10 @@
 import React from 'react';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
+import Checkout from '../../utils/Checkout';
+import { returnRentTotal } from '../../utils/Helpers';
 
-export default ({ orders }) => {
+export default ({ orders, error, navigation }) => {
     return (
         <div className="row">
             <div className="col-sm-12 mb2">
@@ -24,6 +26,9 @@ export default ({ orders }) => {
                                     <form className="w-100 tr">
                                         <button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60"><Link to={`/order/${order._id}`}>Go to order</Link></button>
                                     </form>
+                                    <div className="w-100 tr">
+                                        {order.dateReturned ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
+                                    </div>
                                 </div>
                             </article>
                         );
