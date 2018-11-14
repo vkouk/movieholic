@@ -7,18 +7,33 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 class Header extends Component {
+    state = {
+        isHeaderVisible: false
+    };
+
     onLogout = e => {
         e.preventDefault();
 
         this.props.logoutUser();
     };
 
+    onToggle = () => {
+        this.setState(prevState => ({
+            isHeaderVisible: !prevState.isHeaderVisible
+        }));
+    };
+
     render() {
         const cartCount = (this.props.cart.movie ? this.props.cart.movie.length : 0) + (this.props.cart.serie ? this.props.cart.serie.length : 0);
 
         return (
-            <header className="header">
-                <div className="header__overlay">
+            <div>
+                <button onClick={this.onToggle} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
+                    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
+                    <div className={`animated-icon1 ${this.state.isHeaderVisible ? 'open' : ''}`}><span></span><span></span><span></span></div>
+                </button>
+
+                <header className={`header ${this.state.isHeaderVisible ? 'is-visible' : ''}`}>
                     <div className="header__content">
                         <div className="header__logo">
                             <Link to={'/'}><img src="./images/logo.png" alt="Movieholic Logo" /></Link>
@@ -57,8 +72,20 @@ class Header extends Component {
                             }
                         </ul>
                     </div>
-                </div>
-            </header>
+                    <div className="header__footer">
+                        <div className="header__footer__content">
+                            <div className="header__social">
+                                <div className="header__social__item">
+                                    facebook
+                            </div>
+                            </div>
+                            <div className="header__copyrights">
+                                All Rights Reserved - Vasilis Koukoutis (vkouk)
+                        </div>
+                        </div>
+                    </div>
+                </header>
+            </div>
         );
     }
 }

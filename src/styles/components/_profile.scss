@@ -1,11 +1,11 @@
 .profile__icon {
     &__btn {
-        color: $white;
+        color: $darkgrey;
         background-color: transparent;
         border-color: transparent;
         &:not(:disabled):not(.disabled):active:focus, &:hover, &:active, .show > .btn-secondary.dropdown-toggle {
             box-shadow: none;
-            color: $white;
+            color: $darkgrey;
             background-color: transparent;
             border-color: transparent;
         }
@@ -23,7 +23,7 @@
 
     &__dropdown {
        .header__menu__item > a {
-            color: $darkblue;
+            color: $darkgrey;
         }
     }
 }

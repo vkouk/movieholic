@@ -6,12 +6,13 @@ $md-font: 16px;
 $lg-font: 22px;
 
 //Colors
-$white: #fff;
+$white: #F3F3F3;
+$darkgrey: #343434;
 $darkblue: #105187;
 $turquoise: #2C8693;
 $beige: #F0F1D5;
 $lightorange: #F19722;
-$lightred: #C33325;
+$lightred: #E11837;
 
 //Mixins
 @mixin u-dflex-center {
@@ -38,4 +39,8 @@ $lightred: #C33325;
 .is-disabled {
     pointer-events: none;
     opacity: .5;
+}
+
+.is-visible {
+    transform: translateY(0);
 }

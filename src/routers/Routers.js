@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import Header from '../components/Common/Header';
-import Footer from '../components/Common/Footer';
 import Landing from '../components/Landing';
 import Register from '../components/Auth/Register';
 import Login from '../components/Auth/Login';
@@ -28,7 +27,6 @@ export default () => {
                 <Route path="/movie/:title" component={MovieDetail} />
                 <Route path="/cart" component={Cart} />
                 <Route path="/order/:id" component={ProfileOrdersDetail} />
-                <Footer />
             </div>
         </BrowserRouter>
     );

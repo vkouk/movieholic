@@ -1,0 +1,10 @@
+.hero {
+    &__bg {
+        background: url('../images/hero-img.jpg');
+    }
+
+    &__container {
+        min-height: 90vh;
+        height: auto;
+    }
+}

@@ -6,9 +6,9 @@ class Landing extends Component {
     render() {
         return (
             <div>
-                <div>
-                    <div className="cover bg-left bg-center-l">
-                        <div className="bg-black-80 pb5 pb6-m pb7-l">
+                <div className="hero">
+                    <div className="cover bg-left bg-center-l hero__bg">
+                        <div className="bg-black-80 pb5 pb6-m pb7-l hero__container">
                             <div className="dtc w2 v-mid pa3"></div>
                             <div className="tc-l mt4 mt5-m mt6-l ph3">
                                 <h1 className="f2 f1-l fw2 white-90 mb0 lh-title">This is your super impressive headline</h1>
