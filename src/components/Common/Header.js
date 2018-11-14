@@ -28,9 +28,8 @@ class Header extends Component {
 
         return (
             <div>
-                <button onClick={this.onToggle} className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent20"
-                    aria-controls="navbarSupportedContent20" aria-expanded="false" aria-label="Toggle navigation">
-                    <div className={`animated-icon1 ${this.state.isHeaderVisible ? 'open' : ''}`}><span></span><span></span><span></span></div>
+                <button onClick={this.onToggle} className="btn-toggle btn-toggle--fixed">
+                    <div className={`btn-toggle--icon ${this.state.isHeaderVisible ? 'is-open' : ''}`}><span></span><span></span><span></span></div>
                 </button>
 
                 <header className={`header ${this.state.isHeaderVisible ? 'is-visible' : ''}`}>
