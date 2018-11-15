@@ -21,8 +21,8 @@ export default ({ isHeaderVisible, onHeaderToggle }) => {
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/profile/:id" component={Profile} />
-                <Route path="/movies" component={Movie} />
-                <Route path="/series" component={Serie} />
+                <Route path="/movies" render={() => <Movie isHeaderVisible={isHeaderVisible} />} />
+                <Route path="/series" render={() => <Serie isHeaderVisible={isHeaderVisible} />} />
                 <Route path="/serie/:title" component={SerieDetail} />
                 <Route path="/movie/:title" component={MovieDetail} />
                 <Route path="/cart" component={Cart} />

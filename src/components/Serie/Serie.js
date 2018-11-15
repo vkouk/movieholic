@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchSeries } from '../../actions';
 import SerieList from '../Common/ListItem';
@@ -23,6 +24,7 @@ class Serie extends Component {
             );
         } else {
             return <SerieList
+                isHeaderVisible={this.props.isHeaderVisible}
                 location={this.props.location.pathname}
                 data={this.props.series}
             />
@@ -40,4 +42,4 @@ const mapStateToProps = ({ serie }) => {
     return { series };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { fetchSeries })(Serie));
+export default PrivateRoute(connect(mapStateToProps, { fetchSeries })(withRouter(Serie)));

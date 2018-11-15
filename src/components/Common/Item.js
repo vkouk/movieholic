@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-export default ({ genre, plot, poster, released, stock, title, location }) => {
+export default ({ genre, plot, poster, released, stock, title, location, isHeaderVisible }) => {
     return (
-        <div className="col-sm-3">
+        <div className={`${isHeaderVisible ? 'col-sm-5' : 'col-sm-3'}`}>
             <article className="bg-white center mw5 ba b--black-10 mv4">
                 <div className="pv2 ph3">
                     <h1 className="f6 ttu tracked">{genre}</h1>

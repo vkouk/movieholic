@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Config } from '../../utils/Config';
 import axios from 'axios';
 import { ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 class Search extends Component {
     state = {
@@ -49,25 +51,31 @@ class Search extends Component {
         return (
             <div className="search">
                 <form className="search__form" onSubmit={this.onFormSubmit}>
-                    <input
-                        className="search__input"
-                        type="text"
-                        name="title"
-                        value={this.state.title}
-                        onChange={this.onFormChange}
-                        placeholder="Title..."
-                    />
+                    <div className="search__control">
+                        <FontAwesomeIcon icon={faSearch} className="fa-sm search__icon" />
+                        <input
+                            className="search__input"
+                            type="text"
+                            name="title"
+                            value={this.state.title}
+                            onChange={this.onFormChange}
+                            placeholder="Title..."
+                        />
+                    </div>
                     {
                         this.state.dataType === 'Serie' ? null
                             :
-                            <input
-                                className="search__input"
-                                type="number"
-                                name="year"
-                                value={this.state.year}
-                                onChange={this.onFormChange}
-                                placeholder="Year..."
-                            />
+                            <div className="search__control">
+                                <FontAwesomeIcon icon={faSearch} className="fa-sm search__icon" />
+                                <input
+                                    className="search__input"
+                                    type="number"
+                                    name="year"
+                                    value={this.state.year}
+                                    onChange={this.onFormChange}
+                                    placeholder="Year..."
+                                />
+                            </div>
                     }
                     <ButtonDropdown className="search__dropdown" isOpen={this.state.dropdownOpen} toggle={this.onDropdownToggle}>
                         <DropdownToggle caret className="search__btn">

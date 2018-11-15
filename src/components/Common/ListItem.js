@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Item from './Item';
 import Pagination from "./Pagination";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 class ListItem extends Component {
     state = {
@@ -42,14 +44,17 @@ class ListItem extends Component {
                     <div className="col-sm-12">
                         <div className="search">
                             <form className="search__form">
-                                <input
-                                    className="search__input"
-                                    type="text"
-                                    name="title"
-                                    value={this.state.title}
-                                    onChange={this.onFieldChange}
-                                    placeholder="Search By Title..."
-                                />
+                                <div className="search__control">
+                                    <FontAwesomeIcon icon={faSearch} className="fa-sm search__icon" />
+                                    <input
+                                        className="search__input"
+                                        type="text"
+                                        name="title"
+                                        value={this.state.title}
+                                        onChange={this.onFieldChange}
+                                        placeholder="Search By Title..."
+                                    />
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -57,6 +62,7 @@ class ListItem extends Component {
                         currentData.filter(rec => rec.title.toLowerCase().search(title.toLowerCase()) !== -1).sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0).map(record => {
                             return (
                                 <Item
+                                    isHeaderVisible={this.props.isHeaderVisible}
                                     key={record._id}
                                     location={this.props.location}
                                     {...record}

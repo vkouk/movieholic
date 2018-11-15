@@ -5,24 +5,36 @@
     border-bottom: 2px solid $turquoise;
     margin-bottom: 20px;
 
-    &__input {
-        margin: 10px;
-        padding: 5px;
-        border: 2px solid $turquoise;
+    &__form {
+        display: flex;
+    }
+    &__control {
+        display: flex;
+        align-items: center;
+        border: 2px solid #2C8693;
         border-radius: 50px;
+        margin: 0 8px;
+        padding: 5px;
+    }
+    &__icon {
+        margin-left: 5px;
+    }
+    &__input {
+        border: 0;
+        border: 0;
+        background: transparent;
+        margin-left: 5px;
+        width: 155px;
         &:focus {
             outline-offset: 0;
             outline: 0;
-        }
-        &::placeholder {
-            padding: 0 5px;
         }
     }
 
     &__btn, &__submit {
         @include u-btn;
         padding: 4px 15px;
-        margin: 0 10px;
+        margin: 0 8px;
         border-radius: 50px;
         &:not(:disabled):not(.disabled):active:focus, &:hover, &:focus, &:active, .show > .btn-secondary.dropdown-toggle {
             box-shadow: none;

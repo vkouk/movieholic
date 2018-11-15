@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchMovies } from '../../actions/movieActions';
 import MovieList from '../Common/ListItem';
@@ -23,6 +24,7 @@ class Movie extends Component {
             );
         } else {
             return <MovieList
+                isHeaderVisible={this.props.isHeaderVisible}
                 location={this.props.location.pathname}
                 data={this.props.movies}
             />
@@ -40,4 +42,4 @@ const mapStateToProps = ({ movie }) => {
     return { movies };
 }
 
-export default PrivateRoute(connect(mapStateToProps, { fetchMovies })(Movie));
+export default PrivateRoute(connect(mapStateToProps, { fetchMovies })(withRouter(Movie)));
