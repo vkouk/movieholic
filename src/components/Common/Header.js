@@ -7,20 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 
 class Header extends Component {
-    state = {
-        isHeaderVisible: false
-    };
-
     onLogout = e => {
         e.preventDefault();
 
         this.props.logoutUser();
-    };
-
-    onToggle = () => {
-        this.setState(prevState => ({
-            isHeaderVisible: !prevState.isHeaderVisible
-        }));
     };
 
     render() {
@@ -28,11 +18,11 @@ class Header extends Component {
 
         return (
             <div>
-                <button onClick={this.onToggle} className="btn-toggle btn-toggle--fixed">
-                    <div className={`btn-toggle--icon ${this.state.isHeaderVisible ? 'is-open' : ''}`}><span></span><span></span><span></span></div>
+                <button onClick={this.props.onHeaderToggle} className="btn-toggle btn-toggle--fixed">
+                    <div className={`btn-toggle--icon ${this.props.isHeaderVisible ? 'is-open' : ''}`}><span></span><span></span><span></span></div>
                 </button>
 
-                <header className={`header ${this.state.isHeaderVisible ? 'is-visible' : ''}`}>
+                <header className={`header ${this.props.isHeaderVisible ? 'is-visible' : ''}`}>
                     <div className="header__content">
                         <div className="header__logo">
                             <Link to={'/'}><img src="./images/logo.png" alt="Movieholic Logo" /></Link>

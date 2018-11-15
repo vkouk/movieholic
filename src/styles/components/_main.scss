@@ -1,0 +1,9 @@
+.main {
+    &.is-expanded>div:nth-of-type(2) {
+        transition: all .5s ease;
+        transform: translateX(calc(40% - 430px));
+    }
+    &.is-expanded {
+        overflow: hidden;
+    }
+}

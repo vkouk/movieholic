@@ -12,11 +12,11 @@ import SerieDetail from '../components/Serie/SerieDetail';
 import Cart from '../components/Cart/Cart';
 import ProfileOrdersDetail from '../components/Profile/ProfileOrdersDetail';
 
-export default () => {
+export default ({ isHeaderVisible, onHeaderToggle }) => {
     return (
         <BrowserRouter>
-            <div>
-                <Header />
+            <div className={`w-100 main ${isHeaderVisible ? 'is-expanded' : ''}`}>
+                <Header isHeaderVisible={isHeaderVisible} onHeaderToggle={onHeaderToggle} />
                 <Route exact path="/" component={Landing} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
