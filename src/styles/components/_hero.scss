@@ -2,9 +2,19 @@
     &__bg {
         background: url('../images/hero-img.jpg');
     }
-
     &__container {
         min-height: 90vh;
         height: auto;
+    }
+    &__link {
+        color: $white;
+        border-color: $white;
+        &:hover {
+            color: $white;
+            text-decoration: none;
+        }
+        &:active {
+            transform: scale(0);
+        }
     }
 }

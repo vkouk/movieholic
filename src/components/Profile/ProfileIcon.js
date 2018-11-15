@@ -25,7 +25,7 @@ class ProfileIcon extends Component {
                             this.props.isAuthenticated ? null :
                                 <DropdownItem>
                                     <li className="header__menu__item">
-                                        <Link to={"/login"}>Login</Link>
+                                        <Link onClick={this.props.onHeaderToggle} to={"/login"}>Login</Link>
                                     </li>
                                 </DropdownItem>
                         }
@@ -33,7 +33,7 @@ class ProfileIcon extends Component {
                             this.props.isAuthenticated ?
                                 <DropdownItem>
                                     <li className="header__menu__item">
-                                        <Link to={`/profile/${this.props._id}`}>Profile</Link>
+                                        <Link onClick={this.props.onHeaderToggle} to={`/profile/${this.props._id}`}>Profile</Link>
                                     </li>
                                 </DropdownItem>
                                 : null

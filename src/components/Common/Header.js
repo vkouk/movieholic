@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ProfileIcon from '../Profile/ProfileIcon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faTwitter, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 
 class Header extends Component {
     onLogout = e => {
@@ -29,17 +30,17 @@ class Header extends Component {
                         </div>
                         <ul className="header__menu">
                             <li className="header__menu__item">
-                                <Link to={"/"}>Home</Link>
+                                <Link to={"/"} onClick={this.props.onHeaderToggle}>Home</Link>
                             </li>
                             <li className="header__menu__item">
-                                <Link to={"/movies"}>Movies</Link>
+                                <Link to={"/movies"} onClick={this.props.onHeaderToggle}>Movies</Link>
                             </li>
                             <li className="header__menu__item">
-                                <Link to={"/series"}>Series</Link>
+                                <Link to={"/series"} onClick={this.props.onHeaderToggle}>Series</Link>
                             </li>
                             <li className="header__menu__item">
                                 <div className="header__cart">
-                                    <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"}>
+                                    <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"} onClick={this.props.onHeaderToggle}>
                                         <FontAwesomeIcon icon={faShoppingCart} className="fa-lg header__cart__icon" />
                                         <div className="header__cart__count">{cartCount}</div>
                                     </Link>
@@ -48,13 +49,14 @@ class Header extends Component {
                             {
                                 this.props.user.isAdmin ?
                                     <li className="header__menu__item">
-                                        <Link to={"/dashboard"}>Dashboard</Link>
+                                        <Link to={"/dashboard"} onClick={this.props.onHeaderToggle}>Dashboard</Link>
                                     </li>
                                     : null
                             }
                             {
                                 <ProfileIcon
                                     {...this.props.user}
+                                    onHeaderToggle={this.props.onHeaderToggle}
                                     isAuthenticated={this.props.isAuthenticated}
                                     onLogout={this.onLogout}
                                 />
@@ -65,12 +67,18 @@ class Header extends Component {
                         <div className="header__footer__content">
                             <div className="header__social">
                                 <div className="header__social__item">
-                                    facebook
-                            </div>
+                                    <a href="https://github.com/vkouk"><FontAwesomeIcon icon={faGithub} className="fa-lg header__social__icon" /></a>
+                                </div>
+                                <div className="header__social__item">
+                                    <a href="https://twitter.com/vkoukoutis"><FontAwesomeIcon icon={faTwitter} className="fa-lg header__social__icon" /></a>
+                                </div>
+                                <div className="header__social__item">
+                                    <a href="https://linkedin.com/in/vkoukoutis"><FontAwesomeIcon icon={faLinkedinIn} className="fa-lg header__social__icon" /></a>
+                                </div>
                             </div>
                             <div className="header__copyrights">
-                                All Rights Reserved - Vasilis Koukoutis (vkouk)
-                        </div>
+                                developed by vkouk
+                            </div>
                         </div>
                     </div>
                 </header>

@@ -5,7 +5,7 @@
     position: fixed;
     left: 0;
     width: fit-content;
-    min-width: 250px;
+    min-width: 430px;
     height: 100vh;
     background: $white;
     z-index: 1;
@@ -13,7 +13,6 @@
     transition: all .5s ease;
     &__content {
         @include u-dflex-center;
-        justify-content: space-between;
         flex-direction: column;
     }
     &__logo {
@@ -33,6 +32,15 @@
             &:hover {
                 transform: translateX(-3px);
                 -webkit-transform: translateX(-3px);
+            }
+            &:hover>a::before {
+                content: '';
+                display: inline-flex;
+                position: relative;
+                top: -5px;
+                right: 5px;
+                width: 20px;
+                border: 1px solid #DE1212;
             }
             &>a {
                 color: $darkgrey;
@@ -68,15 +76,36 @@
         }
     }
     &__footer {
+        background: rgba(255, 255, 255, .6);
         &__content {
             @include u-dflex-center;
             flex-direction: column;
         }
     }
     &__copyrights {
+        padding: 10px 0;
         color: $darkgrey;
         font-size: $md-font;
         letter-spacing: 1.3px;
+    }
+    &__social {
+        display: inline-flex;
+        padding: 30px 0 20px 0;
+        &__item {
+            transition: all .5s ease-in;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border: 2px solid transparent;
+            &:hover {
+                border: 2px solid $darkgrey;
+            }
+            &:hover > a {
+                color: $lightred;
+            }
+            &>a {
+                color: $darkgrey;
+            }
+        }
     }
     &.is-visible {
         transition: all .5s ease;
