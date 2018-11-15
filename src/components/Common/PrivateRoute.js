@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 export default WrappedComponent => {
@@ -26,5 +27,5 @@ export default WrappedComponent => {
         return { isAuthenticated };
     };
 
-    return connect(mapStateToProps)(ComposedComponent);
+    return connect(mapStateToProps)(withRouter(ComposedComponent));
 };
