@@ -8,7 +8,9 @@ import Spinner from '../Common/Spinner';
 
 class Movie extends Component {
     componentDidMount() {
-        this.props.fetchMovies();
+        if (this.props.isAuthenticated) {
+            this.props.fetchMovies();
+        }
     }
 
     renderContent = () => {
@@ -36,10 +38,11 @@ class Movie extends Component {
     }
 }
 
-const mapStateToProps = ({ movie }) => {
+const mapStateToProps = ({ movie, auth }) => {
     const { movies } = movie;
+    const { isAuthenticated } = auth;
 
-    return { movies };
+    return { movies, isAuthenticated };
 }
 
 export default PrivateRoute(connect(mapStateToProps, { fetchMovies })(withRouter(Movie)));

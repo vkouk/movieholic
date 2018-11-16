@@ -8,7 +8,9 @@ import Spinner from '../Common/Spinner';
 
 class Serie extends Component {
     componentDidMount() {
-        this.props.fetchSeries();
+        if (this.props.isAuthenticated) {
+            this.props.fetchSeries();
+        }
     }
 
     renderContent = () => {
@@ -36,10 +38,11 @@ class Serie extends Component {
     }
 }
 
-const mapStateToProps = ({ serie }) => {
+const mapStateToProps = ({ serie, auth }) => {
     const { series } = serie;
+    const { isAuthenticated } = auth;
 
-    return { series };
+    return { series, isAuthenticated };
 }
 
 export default PrivateRoute(connect(mapStateToProps, { fetchSeries })(withRouter(Serie)));
