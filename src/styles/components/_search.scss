@@ -4,6 +4,9 @@
     height: 70px;
     border-bottom: 2px solid $turquoise;
     margin-bottom: 20px;
+    &--borderless {
+        border-bottom: none;
+    }
 
     &__form {
         display: flex;

@@ -27,7 +27,7 @@ export default ({ orders, error, navigation }) => {
                                         <button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60"><Link to={`/order/${order._id}`}>Go to order</Link></button>
                                     </form>
                                     <div className="w-100 tr">
-                                        {order.dateReturned ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
+                                        {order.dateReturned || (moment(order.dateOrdered).format('DD/MM/YYYY') === moment(new Date()).format('DD/MM/YYYY')) ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
                                     </div>
                                 </div>
                             </article>

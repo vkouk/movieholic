@@ -1,0 +1,94 @@
+.list {
+    width: 100%;
+    &__header {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        &__text {
+            font-size: $lg-font;
+            color: $darkgrey;
+            font-weight: 700;
+            letter-spacing: .8px;
+        }
+    }
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1440px;
+        align-items: center;
+        margin: 0 auto;
+    }
+    &__col {
+        flex: 0 0 25%;
+        max-width: 25%;
+        &--small {
+            flex: 0 0 41.666667%;
+            max-width: 41.666667%;
+        }
+        & >a:hover {
+            text-decoration: none;
+        }
+    }
+    &__item {
+        max-width: 320px;
+        min-height: 530px;
+        &__content {
+            @include u-dflex-center;
+            flex-direction: column;
+            margin: 15px 0;
+        }
+        &__subcontent {
+            @include u-dflex-center;
+        }
+        &__text {
+            font-size: $md-font;
+            color: $darkgrey;
+            font-weight: 700;
+            letter-spacing: .5px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            &--small {
+                font-size: $sm-font;
+                line-height: normal;
+            }
+        }
+        &__subtext {
+            color: $lightred;
+            font-weight: 700;
+            &::after {
+                content: " - ";
+                margin-right: 5px;
+            }
+            &--borderless {
+                color: $darkgrey;
+                font-size: $sm-font;
+                &::after {
+                   content: '';
+                }
+            }
+        }
+        &__img {
+            transition: all .3s ease-in;
+            min-height: 490px;
+            height: 100%;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            border-bottom-left-radius: 40px;
+            border-bottom-right-radius: 40px;
+            &:hover {
+                opacity: .5;
+            }
+        }
+        &__icon {
+            margin-right: 5px;
+            color: $lightred;
+        }
+    }
+    &__footer {
+        width: 100%;
+        @include u-dflex-center;
+        flex-direction: column;
+        margin: 50px 0;
+    }
+}

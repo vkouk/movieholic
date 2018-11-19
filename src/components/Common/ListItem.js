@@ -3,6 +3,7 @@ import Item from './Item';
 import Pagination from "./Pagination";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import _ from 'lodash';
 
 class ListItem extends Component {
     state = {
@@ -39,10 +40,11 @@ class ListItem extends Component {
         if (totalData === 0) return null;
 
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="search">
+            <div className="list">
+                <div className="list__header">
+                    <div className="list__header__text">{_.capitalize(this.props.location.slice(1))}</div>
+                    <div className="list__search">
+                        <div className="search search--borderless">
                             <form className="search__form">
                                 <div className="search__control">
                                     <FontAwesomeIcon icon={faSearch} className="fa-sm search__icon" />
@@ -58,6 +60,8 @@ class ListItem extends Component {
                             </form>
                         </div>
                     </div>
+                </div>
+                <div className="list__row">
                     {
                         currentData.filter(rec => rec.title.toLowerCase().search(title.toLowerCase()) !== -1).sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0).map(record => {
                             return (
@@ -69,7 +73,7 @@ class ListItem extends Component {
                                 />
                             )
                         })}
-                    <div className="col-sm-12 d-flex align-items-center justify-content-center flex-column">
+                    <div className="list__footer">
                         {currentPage && (
                             <span className="text-secondary mb-2">
                                 Page <span className="font-weight-bold">{currentPage}</span> /{" "}
