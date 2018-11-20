@@ -40,9 +40,9 @@ class Search extends Component {
         }
 
         await axios.post(endpoint, values)
-            .then(({ data }) => {
+            .then(() => {
                 this.setState({ error: '' });
-                this.props.navigation.push(`/${dataType.toLowerCase()}/${data.title}`);
+                this.props.navigation.push(`/${dataType.toLowerCase()}s`);
             })
             .catch(error => this.setState({ error: error.response.data }));
     };
