@@ -16,21 +16,56 @@
         max-width: 100%;
         width: fit-content;
         background: $white;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
     }
     &__header {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         & > div { 
-            padding: 10px;
+            padding: 15px;
         }
+    }
+    &__aside {
+        @include u-dflex-center;
+        flex-direction: column;
+    }
+    &__details {
+        @include u-dflex-center;
+        align-items: flex-start;
+        flex-direction: column;
+        & > div {
+            padding: 5px 0;
+        }
+    }
+    &__text {
+        max-width: 550px;
+    }
+    &__title {
+        @include u-title;
+        margin: 20px 0;
+    }
+    &__footer {
+        @include u-dflex-center;
+        margin: 10px 0;
+    }
+    &__error {
+        color: $lightred;
+        font-weight: 700;
     }
     &__content {
         @include u-dflex-center;
         justify-content: space-around;
+        padding: 20px 0;
     }
     &__thumbnail {
-
+        max-width: 150px;
+        & > img {
+            border-radius: 50px;
+        }
     }
     &__icon {
         cursor: pointer;

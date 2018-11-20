@@ -1,14 +1,17 @@
 .list {
     width: 100%;
     &__header {
-        display: flex;
+        @include u-dflex-center;
         justify-content: space-around;
-        align-items: center;
         &__text {
             font-size: $lg-font;
             color: $darkgrey;
             font-weight: 700;
             letter-spacing: .8px;
+        }
+        &--small {
+            justify-content: space-evenly;
+            max-width: 80%;
         }
     }
     &__row {
@@ -40,13 +43,7 @@
             @include u-dflex-center;
         }
         &__text {
-            font-size: $md-font;
-            color: $darkgrey;
-            font-weight: 700;
-            letter-spacing: .5px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            overflow: hidden;
+            @include u-title;
             &--small {
                 font-size: $sm-font;
                 line-height: normal;
@@ -60,10 +57,7 @@
                 margin-right: 5px;
             }
             &--borderless {
-                text-overflow: ellipsis;
-                white-space: nowrap;
-                overflow: hidden;
-                color: $darkgrey;
+                @include u-title;
                 font-size: $sm-font;
                 &::after {
                     content: '';

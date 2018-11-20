@@ -35,6 +35,16 @@ $lightred: #DE1212;
     transition: all .6s linear;
 }
 
+@mixin u-title {
+    font-size: $md-font;
+    color: $darkgrey;
+    font-weight: 700;
+    letter-spacing: .5px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 // Selectors
 .is-disabled {
     pointer-events: none;

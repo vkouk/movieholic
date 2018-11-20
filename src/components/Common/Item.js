@@ -18,12 +18,14 @@ class Item extends Component {
             rating: this.props.rating,
             poster: this.props.poster,
             plot: this.props.plot
-        }
+        },
+        'error': ''
     };
 
     onPopupToggle = () => {
         this.setState(prevState => ({
-            popupOpen: !prevState.popupOpen
+            popupOpen: !prevState.popupOpen,
+            error: ''
         }));
     };
 
@@ -34,8 +36,9 @@ class Item extends Component {
             const duplicatedMovies = () => (this.props.cart.movie ? this.props.cart.movie.some(movie => movie._id === this.state.product._id) : false);
 
             if (!_.isEmpty(this.props.cart.movie) && Object.keys(this.props.cart.movie).length >= 1) {
-                if (duplicatedMovies())
-                    return;
+                if (duplicatedMovies()) {
+                    return this.setState({ error: `Movie, ${this.state.product.title} already exists in cart!` });
+                }
 
                 this.props.addToCart({ ...this.props.cart, movie: [this.state.product, ...this.props.cart.movie] });
             } else {
@@ -45,8 +48,9 @@ class Item extends Component {
             const duplicatedSeries = () => (this.props.cart.serie ? this.props.cart.serie.some(serie => serie._id === this.state.product._id) : false);
 
             if (!_.isEmpty(this.props.cart.serie) && Object.keys(this.props.cart.serie).length >= 1) {
-                if (duplicatedSeries())
-                    return;
+                if (duplicatedSeries()) {
+                    return this.setState({ error: `Serie, ${this.state.product.title} already exists in cart!` });
+                }
 
                 this.props.addToCart({ ...this.props.cart, serie: [this.state.product, ...this.props.cart.serie] });
             } else {
@@ -63,7 +67,7 @@ class Item extends Component {
 
     render() {
         return (
-            <div className={`${this.props.isHeaderVisible ? 'list__col--small' : 'list__col'}`}>
+            <div className={`${this.props.isHeaderVisible ? 'list__col list__col--small' : 'list__col'}`}>
                 <div onClick={this.onPopupToggle}>
                     <div className="list__item">
                         <img src={this.props.poster !== 'N/A' ? this.props.poster : 'https://developers.google.com/maps/documentation/streetview/images/error-image-generic.png'} className="w-100 list__item__img" alt={this.props.title} />
@@ -77,7 +81,7 @@ class Item extends Component {
                         </div>
                     </div>
                 </div>
-                {this.state.popupOpen && <Popup {...this.props} onClose={this.onPopupToggle} addToCart={this.onAddToCart} />}
+                {this.state.popupOpen && <Popup {...this.props} onClose={this.onPopupToggle} addToCart={this.onAddToCart} error={this.state.error} />}
             </div>
         );
     }

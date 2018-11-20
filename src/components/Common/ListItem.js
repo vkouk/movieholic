@@ -41,7 +41,7 @@ class ListItem extends Component {
 
         return (
             <div className="list">
-                <div className="list__header">
+                <div className={`${this.props.isHeaderVisible ? 'list__header list__header--small' : 'list__header' }`}>
                     <div className="list__header__text">{_.capitalize(this.props.location.slice(1))}</div>
                     <div className="list__search">
                         <div className="search search--borderless">
