@@ -26,7 +26,7 @@ class Header extends Component {
                 <header className={`header ${this.props.isHeaderVisible ? 'is-visible' : ''}`}>
                     <div className="header__content">
                         <div className="header__logo">
-                            <Link to={'/'}><img src="./images/logo.png" alt="Movieholic Logo" /></Link>
+                            <Link to={'/'} onClick={this.props.onHeaderToggle}><img src="./images/logo.png" alt="Movieholic Logo" /></Link>
                         </div>
                         <ul className="header__menu">
                             <li className="header__menu__item">
