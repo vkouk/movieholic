@@ -12,7 +12,7 @@ export default (state = initialState, action) => {
         case CLEAR_RECOMMENDATIONS:
             return { ...state, recommendations: {}, error: '' };
         case FETCH_ERROR:
-            return { ...state, error: action.payload };
+            return { ...state, error: action.payload, recommendations: {} };
         default:
             return state;
     }

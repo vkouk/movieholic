@@ -14,12 +14,6 @@ class Recommendation extends Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if (!prevProps.isAuthenticated) {
-            this.props.clearRecommendations();
-        }
-    }
-
     renderContent = () => {
         const { recommendations } = this.props;
         if (Object.keys(recommendations).length === 0) {
