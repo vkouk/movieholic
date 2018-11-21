@@ -15,7 +15,7 @@ class Recommendation extends Component {
     }
 
     renderContent = () => {
-        const { recommendations } = this.props;
+        const { recommendations, isHeaderVisible, location } = this.props;
         if (Object.keys(recommendations).length === 0) {
             return (
                 <div className="container-fluid">
@@ -30,14 +30,14 @@ class Recommendation extends Component {
             return (
                 <div>
                     <RecommendationList
-                        isHeaderVisible={this.props.isHeaderVisible}
-                        location={this.props.location.pathname}
-                        data={this.props.recommendations.suggestedMovies}
+                        isHeaderVisible={isHeaderVisible}
+                        location={location.pathname}
+                        data={recommendations.suggestedMovies}
                     />
                     <RecommendationList
-                        isHeaderVisible={this.props.isHeaderVisible}
-                        location={this.props.location.pathname}
-                        data={this.props.recommendations.suggestedSeries}
+                        isHeaderVisible={isHeaderVisible}
+                        location={location.pathname}
+                        data={recommendations.suggestedSeries}
                     />
                 </div>
             );

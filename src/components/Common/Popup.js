@@ -5,7 +5,7 @@ import { faCartPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 class Popup extends Component {
     render() {
-        const { poster, title, plot, writer, stock, released, addToCart, onClose } = this.props;
+        const { poster, title, plot, writer, stock, released, addToCart, onClose, location } = this.props;
 
         return ReactDOM.createPortal(
             <div className='popup'>
@@ -25,7 +25,7 @@ class Popup extends Component {
                                 <div className="popup__text">Plot: {plot}</div>
                                 <div className="popup__text">Writer: {writer}</div>
                                 <small>Released: {released}</small>
-                                <div onClick={addToCart} className={stock <= 0 ? 'is-disabled' : null}>
+                                <div onClick={addToCart} className={`${stock <= 0 ? 'is-disabled' : null} ${location === '/' ? 'is-hidden' : null}`}>
                                     Add to cart: <FontAwesomeIcon icon={faCartPlus} className="fa-lg popup__icon" />
                                 </div>
                             </div>

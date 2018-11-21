@@ -23,7 +23,7 @@ class Landing extends Component {
                     </div>
                 </div>
                 <Search navigation={this.props.history} />
-                <Recommendation />
+                <Recommendation isHeaderVisible={this.props.isHeaderVisible} />
             </div>
         );
     }
