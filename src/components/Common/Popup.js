@@ -22,12 +22,12 @@ class Popup extends Component {
                                 <div className="popup__title">{title}</div>
                             </div>
                             <div className="popup__details">
-                                <div onClick={addToCart} className={stock <= 0 ? 'is-disabled' : null}>
-                                    Add to cart: <FontAwesomeIcon icon={faCartPlus} className="fa-lg popup__icon" />
-                                </div>
                                 <div className="popup__text">Plot: {plot}</div>
                                 <div className="popup__text">Writer: {writer}</div>
                                 <small>Released: {released}</small>
+                                <div onClick={addToCart} className={stock <= 0 ? 'is-disabled' : null}>
+                                    Add to cart: <FontAwesomeIcon icon={faCartPlus} className="fa-lg popup__icon" />
+                                </div>
                             </div>
                         </div>
                         {this.props.error &&

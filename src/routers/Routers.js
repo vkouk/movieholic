@@ -15,7 +15,7 @@ export default ({ isHeaderVisible, onHeaderToggle }) => {
         <BrowserRouter>
             <div className={`w-100 main ${isHeaderVisible ? 'is-expanded' : ''}`}>
                 <Header isHeaderVisible={isHeaderVisible} onHeaderToggle={onHeaderToggle} />
-                <Route exact path="/" component={Landing} />
+                <Route exact path="/" render={() => <Landing isHeaderVisible={isHeaderVisible} />} />
                 <Route path="/login" component={Login} />
                 <Route path="/register" component={Register} />
                 <Route path="/profile/:id" component={Profile} />

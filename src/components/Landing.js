@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Search from './Common/Search';
+import Recommendation from './Recommendation/Recommendation';
 
 class Landing extends Component {
     render() {
@@ -22,6 +23,7 @@ class Landing extends Component {
                     </div>
                 </div>
                 <Search navigation={this.props.history} />
+                <Recommendation />
             </div>
         );
     }

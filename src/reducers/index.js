@@ -3,10 +3,12 @@ import authReducer from './authReducer';
 import rentReducer from './rentReducer';
 import movieReducer from './movieReducer';
 import serieReducer from './serieReducer';
+import recommendationReducer from './recommendationReducer';
 
 export default combineReducers({
     auth: authReducer,
     rent: rentReducer,
     movie: movieReducer,
-    serie: serieReducer
+    serie: serieReducer,
+    recommendation: recommendationReducer
 });
