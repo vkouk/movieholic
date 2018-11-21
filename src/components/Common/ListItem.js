@@ -41,8 +41,8 @@ class ListItem extends Component {
 
         return (
             <div className="list">
-                <div className={`${this.props.isHeaderVisible ? 'list__header list__header--small' : 'list__header' }`}>
-                    <div className="list__header__text">{_.capitalize(this.props.location.slice(1))}</div>
+                <div className={`list__header ${this.props.isHeaderVisible ? 'list__header list__header--small' : null}`}>
+                    <div className="list__header__text">{this.props.location === '/' ? this.props.headerTitle : _.capitalize(this.props.location.slice(1))}</div>
                     <div className="list__search">
                         <div className="search search--borderless">
                             <form className="search__form">
@@ -83,7 +83,7 @@ class ListItem extends Component {
                         <div className="d-flex flex-row align-items-center">
                             <Pagination
                                 totalRecords={totalData}
-                                pageLimit={12}
+                                pageLimit={8}
                                 pageNeighbours={1}
                                 onPageChanged={this.onPageChanged}
                             />

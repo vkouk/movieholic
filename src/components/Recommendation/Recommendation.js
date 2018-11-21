@@ -33,11 +33,13 @@ class Recommendation extends Component {
                         isHeaderVisible={isHeaderVisible}
                         location={location.pathname}
                         data={recommendations.suggestedMovies}
+                        headerTitle={'Recommended Movies'}
                     />
                     <RecommendationList
                         isHeaderVisible={isHeaderVisible}
                         location={location.pathname}
                         data={recommendations.suggestedSeries}
+                        headerTitle={'Recommended Series'}
                     />
                 </div>
             );
