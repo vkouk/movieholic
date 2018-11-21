@@ -21,5 +21,6 @@ export const REMOVE_SERIE_CART_ITEM = 'remove_serie_cart_item';
 export const ORDER_ERROR = 'order_error';
 
 export const GET_USER_RECOMMENDATIONS = 'get_user_recommendations';
+export const CLEAR_RECOMMENDATIONS = 'clear_recommendations';
 
 export const FETCH_ERROR = 'fetch_error';

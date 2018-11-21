@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getUserRecommendations } from '../../actions';
+import { getUserRecommendations, clearRecommendations } from '../../actions';
 import RecommendationList from '../Common/ListItem';
 import Spinner from '../Common/Spinner';
 
@@ -9,11 +9,20 @@ class Recommendation extends Component {
     componentDidMount() {
         if (this.props.isAuthenticated) {
             this.props.getUserRecommendations({ userId: this.props.user._id });
+        } else {
+            this.props.clearRecommendations();
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if (!prevProps.isAuthenticated) {
+            this.props.clearRecommendations();
         }
     }
 
     renderContent = () => {
-        if ((this.props.recommendations.suggestedMovies.length === 0 || this.props.recommendations.suggestedMovies.length === null) && (this.props.recommendations.suggestedSeries.length === 0 || this.props.recommendations.suggestedSeries.length === null)) {
+        const { recommendations } = this.props;
+        if (Object.keys(recommendations).length === 0) {
             return (
                 <div className="container-fluid">
                     <div className="row">
@@ -47,10 +56,10 @@ class Recommendation extends Component {
 }
 
 const mapStateToProps = ({ auth, recommendation }) => {
-    const { recommendations } = recommendation;
+    const { recommendations, error } = recommendation;
     const { user, isAuthenticated } = auth;
 
     return { user, isAuthenticated, recommendations };
 }
 
-export default connect(mapStateToProps, { getUserRecommendations })(withRouter(Recommendation));
+export default connect(mapStateToProps, { getUserRecommendations, clearRecommendations })(withRouter(Recommendation));
