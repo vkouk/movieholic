@@ -35,7 +35,7 @@ class ListItem extends Component {
             currentData,
             title
         } = this.state;
-        const totalData = this.props.data.length;
+        const totalData = currentData.length;
 
         if (totalData === 0) return null;
 
