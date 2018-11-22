@@ -35,13 +35,13 @@ class ListItem extends Component {
             currentData,
             title
         } = this.state;
-        const totalData = currentData.length;
+        const totalData = this.props.data.length;
 
         if (totalData === 0) return null;
 
         return (
             <div className="list">
-                <div className={`list__header ${this.props.isHeaderVisible ? 'list__header list__header--small' : null}`}>
+                <div className={`${this.props.isHeaderVisible ? 'list__header  list__header--small' : 'list__header'}`}>
                     <div className="list__header__text">{this.props.location === '/' ? this.props.headerTitle : _.capitalize(this.props.location.slice(1))}</div>
                     <div className="list__search">
                         <div className="search search--borderless">
