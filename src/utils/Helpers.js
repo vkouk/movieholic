@@ -4,10 +4,10 @@ export const returnRentTotal = (movies, series, dateOrdered) => {
     let total = 0;
 
     if (movies || series) {
-        const moviesRating = movies.reduce((acc, curr) => acc + parseFloat(curr.rating), 0);
-        const seriesRating = series.reduce((acc, curr) => acc + parseFloat(curr.rating), 0);
+        const moviesRating = movies.reduce((acc, curr) => (typeof acc !== 'undefined' ? acc : 0) + (curr.rating !== 'N/A' ? parseFloat(curr.rating) : 1), 0);
+        const seriesRating = series.reduce((acc, curr) => (typeof acc !== 'undefined' ? acc : 0) + (curr.rating !== 'N/A' ? parseFloat(curr.rating) : 1), 0);
         const rentalRating = parseFloat(((moviesRating + seriesRating) / 10).toFixed(2));
-        const rentalDays = moment().diff(dateOrdered, 'days');
+        const rentalDays = moment().diff(dateOrdered, 'days') + 1;
 
         total = parseFloat(rentalDays * rentalRating * 0.9).toFixed(2);
     }
@@ -18,9 +18,10 @@ export const returnRentProductCost = (rating, dateOrdered) => {
     let total = 0;
 
     if (rating) {
-        const rentalRating = parseFloat((rating / 10).toFixed(2));
-        const rentalDays = moment().diff(dateOrdered, 'days');
-        
+        rating = rating !== 'N/A' ? rating : 1;
+        const rentalRating = parseFloat(rating / 10).toFixed(2);
+        const rentalDays = moment().diff(dateOrdered, 'days') + 1;
+
         total = parseFloat((rentalRating * rentalDays * 0.9).toFixed(2));
     }
     return total;

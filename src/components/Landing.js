@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Search from './Common/Search';
 import Recommendation from './Recommendation/Recommendation';
@@ -36,4 +36,4 @@ const mapStateToProps = ({ auth }) => {
 }
 
 
-export default connect(mapStateToProps, null)(Landing);
+export default connect(mapStateToProps, null)(withRouter(Landing));
