@@ -5,13 +5,14 @@ class ProfileForm extends Component {
     state = {
         "email": this.props.email,
         "username": this.props.username,
-        "amount": 0
+        "avatar": this.props.avatar,
+        "amount": 5
     }
 
     onFormUpdate = e => {
         e.preventDefault();
 
-        this.props.onFormSubmit({ email: this.state.email, username: this.state.username });
+        this.props.onFormSubmit({ email: this.state.email, username: this.state.username, avatar: this.state.avatar });
     };
 
     onFormChange = e => {
@@ -22,6 +23,10 @@ class ProfileForm extends Component {
         return (
             <div className="form">
                 <form className="form__content" onSubmit={this.onFormUpdate}>
+                    <div className="form__header">
+                        <img className="br4 w3" src={this.state.avatar} alt={this.state.username} />
+                        <p className="form__text">Hello, {this.state.username}. Please edit your profile.</p>
+                    </div>
                     <input
                         className="form__input"
                         type="email"
@@ -46,13 +51,24 @@ class ProfileForm extends Component {
                         onChange={this.onFormChange}
                         placeholder="Add Balance Amount..."
                     />
-                    <input className="form__submit" type="submit" />
+                    <input
+                        className="form__input"
+                        type="url"
+                        name="avatar"
+                        value={this.state.avatar}
+                        onChange={this.onFormChange}
+                        placeholder="Avatar URL..."
+                    />
+                    <div className="form__control">
+                        <input className="form__submit" type="submit" />
+                        <AddBalance
+                            userId={this.props._id}
+                            amount={this.state.amount}
+                        />
+                    </div>
                     {this.props.error && <p className="form__error">{this.props.error}</p>}
+                    {this.state.amount <= 0 && <p className="form__error">Please enter an amount greater than 0</p>}
                 </form>
-                <AddBalance
-                    userId={this.props._id}
-                    amount={this.state.amount}
-                />
             </div>
         );
     }

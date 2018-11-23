@@ -1,43 +1,87 @@
-import React from 'react';
-import moment from 'moment';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
+import Pagination from '../Common/Pagination';
 import Checkout from '../../utils/Checkout';
 import { returnRentTotal } from '../../utils/Helpers';
 
-export default ({ orders, error, navigation }) => {
-    return (
-        <div className="row">
-            <div className="col-sm-12 mb2">
-                <span className="b f3 bb">Latest Orders</span>
-            </div>
-            <div className="col-sm-12">
-                {
-                    orders && orders.length >= 1 ? orders.sort((a, b) => moment(a.dateOrdered).format('DD/MM/YYYY HH:MM') !== moment(b.dateOrdered).format('DD/MM/YYYY HH:MM') ? moment(a.dateOrdered).format('DD/MM/YYYY HH:MM') > moment(b.dateOrdered).format('DD/MM/YYYY HH:MM') ? -1 : 1 : 0).map(order => {
-                        return (
-                            <article key={order._id} className="dt w-100 bb b--black-05 pb2 mt2" href="#0">
-                                <div className="dtc w2 w3-ns v-mid">
-                                    <img src={order.customer.avatar} className="ba b--black-10 db br-100 w2 w3-ns h2 h3-ns" alt={order.customer.username} />
-                                </div>
-                                <div className="dtc v-mid pl3">
-                                    <h1 className="f6 f5-ns fw6 lh-title black mv0">Order datetime: {moment(order.dateOrdered).format('DD/MM/YYYY HH:MM')}</h1>
-                                    <h2 className="f6 fw4 mt0 mb0 black-60">Movies Rented: {order.movies.length}, Series Rented: {order.series.length}</h2>
-                                </div>
-                                <div className="dtc v-mid">
-                                    <form className="w-100 tr">
-                                        <button className="f6 button-reset bg-white ba b--black-10 dim pointer pv1 black-60"><Link to={`/order/${order._id}`}>Go to order</Link></button>
-                                    </form>
-                                    <div className="w-100 tr">
-                                        {order.dateReturned || (moment(order.dateOrdered).format('DD/MM/YYYY') === moment(new Date()).format('DD/MM/YYYY')) ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
+class ProfileOrders extends Component {
+    state = {
+        'currentPage': null,
+        'totalPages': null,
+        'currentData': this.props.orders
+    };
+
+    onPageChanged = data => {
+        const { currentPage, totalPages, pageLimit } = data;
+
+        const offset = (currentPage - 1) * pageLimit;
+        const currentData = this.props.orders.slice(offset, offset + pageLimit);
+        this.setState({ currentPage, totalPages, currentData });
+    };
+
+    render() {
+        const { error, navigation } = this.props;
+        const {
+            currentPage,
+            totalPages,
+            currentData,
+        } = this.state;
+        const totalData = this.props.orders.length;
+
+        if (totalData === 0) {
+            return (
+                <div>
+                    <span className="b f3 bb">No orders found.</span>
+                </div>
+            );
+        }
+
+        return (
+            <div className="list__row list__row--size">
+                <div className="list__col list__col--big ml-3">
+                    <span className="b f3 bb">Latest Orders</span>
+                </div>
+                <div className="list__col list__col--big">
+                    {
+                        currentData.sort((a, b) => b.dateOrdered - a.dateOrdered).map(order => {
+                            return (
+                                <div key={order._id} className="list__table bb b--black-05 pb2 mt2">
+                                    <div>
+                                        <h1 className="f6 f5-ns fw6 lh-title black mv0">Order datetime: {moment(order.dateOrdered).format('DD/MM/YYYY HH:MM')}</h1>
+                                        <h2 className="f6 fw4 mt0 mb0 black-60">Movies Rented: {order.movies.length}, Series Rented: {order.series.length}</h2>
+                                    </div>
+                                    <div className="list__table list__table--center">
+                                        <div className="list__btn"><Link to={`/order/${order._id}`}>See Order</Link></div>
+                                        <div>
+                                            {order.dateReturned || (moment(order.dateOrdered).format('DD/MM/YYYY') === moment(new Date()).format('DD/MM/YYYY')) ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
+                                        </div>
+                                        {error && <div className="list__error">{error}</div>}
                                     </div>
                                 </div>
-                            </article>
-                        );
-                    }) :
-                        <div>
-                            <span className="b f3 bb">No orders found.</span>
+                            );
+                        })
+                    }
+                    <div className="list__footer">
+                        {currentPage && (
+                            <span className="text-secondary mb-2">
+                                Page <span className="font-weight-bold">{currentPage}</span> /{" "}
+                                <span className="font-weight-bold">{totalPages}</span>
+                            </span>
+                        )}
+                        <div className="d-flex flex-row align-items-center">
+                            <Pagination
+                                totalRecords={totalData}
+                                pageLimit={5}
+                                pageNeighbours={1}
+                                onPageChanged={this.onPageChanged}
+                            />
                         </div>
-                }
+                    </div>
+                </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
+
+export default ProfileOrders;

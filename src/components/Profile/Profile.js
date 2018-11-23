@@ -19,16 +19,16 @@ class Profile extends Component {
 
     render() {
         return (
-            <div className="container-fluid">
-                <div className="row">
-                    <div className="col-sm-3">
+            <div className="list">
+                <div className="list__row list__row--start">
+                    <div className="list__col list__col--small">
                         <ProfileForm
                             {...this.props.user}
                             error={this.props.error}
                             onFormSubmit={this.onFormSubmit}
                         />
                     </div>
-                    <div className="col-sm-9">
+                    <div className="list__col list__col--small">
                         <ProfileOrders
                             orders={this.props.userOrders}
                             error={this.props.error}

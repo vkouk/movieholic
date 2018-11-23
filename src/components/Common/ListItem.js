@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Item from './Item';
+import Sort from './Sort';
 import Pagination from "./Pagination";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -26,6 +27,20 @@ class ListItem extends Component {
         const offset = (currentPage - 1) * pageLimit;
         const currentData = this.props.data.slice(offset, offset + pageLimit);
         this.setState({ currentPage, totalPages, currentData });
+    };
+
+    onSortBy = label => {
+        let sortedData = [];
+
+        if (label === 'Title') {
+            sortedData = this.state.currentData.sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0);
+        } else if (label === 'Stock') {
+            sortedData = this.state.currentData.sort((a, b) => b.stock - a.stock);
+        } else if (label == 'Rating') {
+            sortedData = this.state.currentData.sort((a, b) => b.rating - a.rating);
+        }
+
+        this.setState({ currentData: sortedData });
     };
 
     render() {
@@ -60,10 +75,11 @@ class ListItem extends Component {
                             </form>
                         </div>
                     </div>
+                    <div className="list__sort"><Sort onSortBy={this.onSortBy} /></div>
                 </div>
                 <div className="list__row">
                     {
-                        currentData.filter(rec => rec.title.toLowerCase().search(title.toLowerCase()) !== -1).sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0).map(record => {
+                        currentData.filter(rec => rec.title.toLowerCase().search(title.toLowerCase()) !== -1).map(record => {
                             return (
                                 <Item
                                     isHeaderVisible={this.props.isHeaderVisible}

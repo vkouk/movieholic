@@ -16,8 +16,8 @@ class Checkout extends React.Component {
                 stripeKey={Config.STRIPE_KEY}
                 image="http://movieholic.herokuapp.com/images/logo.png"
             >
-                <button className="btn">
-                    Return your order
+                <button className="list__btn">
+                    Return Order
                 </button>
             </StripeCheckout>
         )

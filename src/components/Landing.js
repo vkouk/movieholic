@@ -18,6 +18,7 @@ class Landing extends Component {
                                 <Link className="hero__link f6 no-underline grow dib v-mid white ba b--white ph3 pv2 mb3" to={'/movies'}>Movies</Link>
                                 <span className="dib v-mid ph3 white-70 mb3">or</span>
                                 <Link className="hero__link f6 no-underline grow dib v-mid white ba b--white ph3 pv2 mb3" to={'/series'}>Series</Link>
+                                <h2 className="fw1 f3 white-80 mt3 mb4">Below are all your recommended movies &amp; series, and search to browse new one!</h2>
                             </div>
                         </div>
                     </div>

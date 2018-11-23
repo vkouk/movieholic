@@ -25,11 +25,11 @@ $lightred: #DE1212;
 @mixin u-btn {
     padding: 15px 25px;
     margin: 0 auto;
-    border: 2px solid $turquoise;
+    border: 2px solid $darkgrey;
     background: transparent;
     text-transform: uppercase;
     cursor: pointer;
-    color: $turquoise;
+    color: $darkgrey;
     font-weight: 700;
     letter-spacing: 1.5px;
     transition: all .6s linear;

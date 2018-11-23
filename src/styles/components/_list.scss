@@ -2,7 +2,7 @@
     width: 100%;
     &__header {
         @include u-dflex-center;
-        justify-content: space-around;
+        justify-content: space-evenly;
         &__text {
             font-size: $lg-font;
             color: $darkgrey;
@@ -20,6 +20,12 @@
         width: 1440px;
         align-items: center;
         margin: 0 auto;
+        &--start {
+            align-items: flex-start;
+        }
+        &--size {
+            width: 100%;
+        }
     }
     &__col {
         cursor: pointer;
@@ -29,6 +35,10 @@
         &--small {
             flex: 0 0 41.666667%;
             max-width: 41.666667%;
+        }
+        &--big {
+            flex: 0 0 100%;
+            max-width: 100%;
         }
     }
     &__item {
@@ -80,6 +90,36 @@
             margin-right: 5px;
             color: $lightred;
         }
+    }
+    &__btn {
+        @include u-btn;
+        @include u-dflex-center;
+        font-size: $sm-font;
+        padding: 5px;
+        margin: 0 5px;
+        &:hover {
+            color: $white;
+            background: $darkgrey;
+        }
+        &>a {
+            color: $darkgrey;
+            &:hover {
+                color: $white;
+                text-decoration: none;
+            }
+        }
+    }
+    &__table {
+        @include u-dflex-center;
+        justify-content: space-between;
+        &--center {
+            justify-content: center;
+        }
+    }
+    &__error {
+        @include u-title;
+        color: $lightred;
+        max-width: 100px;
     }
     &__footer {
         width: 100%;

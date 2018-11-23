@@ -18,9 +18,9 @@ class AddBalance extends React.Component {
                 stripeKey={Config.STRIPE_KEY}
                 image="http://movieholic.herokuapp.com/images/logo.png"
             >
-                <button className="btn">
+                <div className="form__btn">
                     Add Balance
-                </button>
+                </div>
             </StripeCheckout>
         )
     }
