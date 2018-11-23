@@ -13,6 +13,12 @@ class Profile extends Component {
         this.props.getUserRents(this.props.match.params.id);
     }
 
+    componentDidUpdate() {
+        if (!this.props.isAuthenticated) {
+            this.props.history.push('/');
+        }
+    }
+
     onFormSubmit = profileValues => {
         this.props.updateProfile(profileValues, this.props.match.params.id);
     };

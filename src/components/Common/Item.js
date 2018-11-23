@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Popup from './Popup';
 import { addToCart } from '../../actions';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar, faCartPlus } from '@fortawesome/free-solid-svg-icons';
 import _ from 'lodash';
 
 class Item extends Component {
@@ -81,7 +81,24 @@ class Item extends Component {
                         </div>
                     </div>
                 </div>
-                {this.state.popupOpen && <Popup {...this.props} onClose={this.onPopupToggle} addToCart={this.onAddToCart} error={this.state.error} />}
+                {this.state.popupOpen &&
+                    <Popup {...this.props} onClose={this.onPopupToggle} type={this.props.location === '/' ? 'home' : this.props.location.slice(1, -1)} error={this.state.error}>
+                        <div className="popup__aside">
+                            <div className="popup__thumbnail">
+                                <img src={this.props.poster} alt={this.props.title} />
+                            </div>
+                            <div className="popup__title">{this.props.title}</div>
+                        </div>
+                        <div className="popup__details">
+                            <div className="popup__text">Plot: {this.props.plot}</div>
+                            <div className="popup__text">Writer: {this.props.writer}</div>
+                            <small>Released: {this.props.released}</small>
+                            <div onClick={this.onAddToCart} className={`${this.props.stock <= 0 ? 'is-disabled' : null} ${this.props.location === '/' ? 'is-hidden' : null}`}>
+                                Add to cart: <FontAwesomeIcon icon={faCartPlus} className="fa-lg popup__icon" />
+                            </div>
+                        </div>
+                    </Popup>
+                }
             </div>
         );
     }

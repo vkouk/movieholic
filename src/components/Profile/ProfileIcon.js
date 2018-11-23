@@ -41,7 +41,10 @@ class ProfileIcon extends Component {
                         <DropdownItem>
                             <li className="header__menu__item">
                                 {
-                                    this.props.isAuthenticated ? <a href="javascript:void(0)" onClick={this.props.onLogout}>Logout</a> : <Link to={"/register"} onClick={this.props.onHeaderToggle}>Register</Link>
+                                    this.props.isAuthenticated ? <a onClick={e => {
+                                        this.props.onLogout(e);
+                                        this.props.onHeaderToggle();
+                                    }}>Logout</a> : <Link to={"/register"} onClick={this.props.onHeaderToggle}>Register</Link>
                                 }
                             </li>
                         </DropdownItem>

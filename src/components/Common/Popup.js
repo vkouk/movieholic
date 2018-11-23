@@ -1,34 +1,21 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartPlus, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 class Popup extends Component {
     render() {
-        const { poster, title, plot, writer, stock, released, addToCart, onClose, location } = this.props;
+        const { onClose, children, type } = this.props;
 
         return ReactDOM.createPortal(
             <div className='popup'>
                 <div className='popup__row'>
-                    <div className="popup__container">
+                    <div className={`popup__container popup__${type}`}>
                         <div className="popup__header">
                             <div onClick={onClose}><FontAwesomeIcon icon={faTimes} className="fa-lg popup__icon" /></div>
                         </div>
                         <div className="popup__content">
-                            <div className="popup__aside">
-                                <div className="popup__thumbnail">
-                                    <img src={poster} alt={title} />
-                                </div>
-                                <div className="popup__title">{title}</div>
-                            </div>
-                            <div className="popup__details">
-                                <div className="popup__text">Plot: {plot}</div>
-                                <div className="popup__text">Writer: {writer}</div>
-                                <small>Released: {released}</small>
-                                <div onClick={addToCart} className={`${stock <= 0 ? 'is-disabled' : null} ${location === '/' ? 'is-hidden' : null}`}>
-                                    Add to cart: <FontAwesomeIcon icon={faCartPlus} className="fa-lg popup__icon" />
-                                </div>
-                            </div>
+                            {children}
                         </div>
                         {this.props.error &&
                             <div className="popup__footer">
