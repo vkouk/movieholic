@@ -13,6 +13,12 @@ class Serie extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.series.length !== this.props.series.length) {
+            this.props.fetchSeries();
+        }
+    }
+
     renderContent = () => {
         if (this.props.series.length === 0 || this.props.series.length === null) {
             return (
@@ -27,6 +33,8 @@ class Serie extends Component {
         } else {
             return <SerieList
                 isHeaderVisible={this.props.isHeaderVisible}
+                isCartVisible={this.props.isCartVisible}
+                onCartToggle={this.props.onCartToggle}
                 location={this.props.location.pathname}
                 data={this.props.series}
             />

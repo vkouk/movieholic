@@ -36,7 +36,7 @@ class ListItem extends Component {
             sortedData = this.state.currentData.sort((a, b) => a.title !== b.title ? a.title < b.title ? -1 : 1 : 0);
         } else if (label === 'Stock') {
             sortedData = this.state.currentData.sort((a, b) => b.stock - a.stock);
-        } else if (label == 'Rating') {
+        } else if (label === 'Rating') {
             sortedData = this.state.currentData.sort((a, b) => b.rating - a.rating);
         }
 
@@ -83,6 +83,8 @@ class ListItem extends Component {
                             return (
                                 <Item
                                     isHeaderVisible={this.props.isHeaderVisible}
+                                    isCartVisible={this.props.isCartVisible}
+                                    onCartToggle={this.props.onCartToggle}
                                     key={record._id}
                                     location={this.props.location}
                                     {...record}

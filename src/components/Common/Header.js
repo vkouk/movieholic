@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { logoutUser } from '../../actions';
 import { Link } from 'react-router-dom';
 import ProfileIcon from '../Profile/ProfileIcon';
+import Cart from '../Cart/Cart';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import { faGithub, faTwitter, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
@@ -40,10 +41,13 @@ class Header extends Component {
                             </li>
                             <li className="header__menu__item">
                                 <div className="header__cart">
-                                    <Link className={cartCount >= 1 ? null : 'is-disabled'} to={"/cart"} onClick={this.props.onHeaderToggle}>
+                                    <div className={cartCount >= 1 ? null : 'is-disabled'} onClick={() => {
+                                        this.props.onHeaderToggle();
+                                        this.props.onCartToggle();
+                                    }}>
                                         <FontAwesomeIcon icon={faShoppingCart} className="fa-lg header__cart__icon" />
                                         <div className="header__cart__count">{cartCount}</div>
-                                    </Link>
+                                    </div>
                                 </div>
                             </li>
                             {
@@ -82,6 +86,7 @@ class Header extends Component {
                         </div>
                     </div>
                 </header>
+                {this.props.isCartVisible && <Cart isCartVisible={this.props.isCartVisible} onCartToggle={this.props.onCartToggle} />}
             </div>
         );
     }

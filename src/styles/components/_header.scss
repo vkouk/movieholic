@@ -57,6 +57,9 @@
         }
     }
     &__cart {
+        &:hover {
+            cursor: pointer;
+        }
         &__icon {
             color: $darkgrey;
         }

@@ -17,6 +17,7 @@ class Cart extends Component {
 
     componentDidUpdate() {
         if ((this.props.cart.movie && this.props.cart.movie.length <= 0) && (this.props.cart.serie && this.props.cart.serie.length <= 0)) {
+            this.props.onCartToggle();
             this.props.history.push('/');
         }
     }
@@ -45,6 +46,8 @@ class Cart extends Component {
     render() {
         return (
             <CartList
+                isCartVisible={this.props.isCartVisible}
+                onCartToggle={this.props.onCartToggle}
                 onOrderClick={this.onButtonClick}
                 onMovieCartRemove={this.onMovieRemove}
                 onSerieCartRemove={this.onSerieRemove}

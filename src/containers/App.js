@@ -10,7 +10,8 @@ if (localStorage.getItem('token')) {
 
 class App extends Component {
   state = {
-    isHeaderVisible: false
+    isHeaderVisible: false,
+    isCartVisible: false
   };
 
   componentDidMount() {
@@ -23,10 +24,17 @@ class App extends Component {
     }));
   };
 
+  onCartToggle = () => {
+    this.setState(prevState => ({
+      isCartVisible: !prevState.isCartVisible
+    }));
+  };
+
   render() {
     return <Routers
       {...this.state}
       onHeaderToggle={this.onHeaderToggle}
+      onCartToggle={this.onCartToggle}
     />;
   }
 }

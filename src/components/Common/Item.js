@@ -57,6 +57,10 @@ class Item extends Component {
                 this.props.addToCart({ ...this.props.cart, serie: [this.state.product] });
             }
         }
+
+        if (!this.props.isCartVisible) {
+            this.props.onCartToggle();
+        }
     };
 
     onAddToCart = e => {

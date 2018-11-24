@@ -13,6 +13,12 @@ class Movie extends Component {
         }
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.movies.length !== this.props.movies.length) {
+            this.props.fetchMovies();
+        }
+    }
+
     renderContent = () => {
         if (this.props.movies.length === 0 || this.props.movies.length === null) {
             return (
@@ -27,6 +33,8 @@ class Movie extends Component {
         } else {
             return <MovieList
                 isHeaderVisible={this.props.isHeaderVisible}
+                isCartVisible={this.props.isCartVisible}
+                onCartToggle={this.props.onCartToggle}
                 location={this.props.location.pathname}
                 data={this.props.movies}
             />

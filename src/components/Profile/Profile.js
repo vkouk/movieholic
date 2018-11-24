@@ -13,9 +13,12 @@ class Profile extends Component {
         this.props.getUserRents(this.props.match.params.id);
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps) {
         if (!this.props.isAuthenticated) {
             this.props.history.push('/');
+        }
+        if (prevProps.userOrders.length !== this.props.userOrders.length) {
+            this.props.getUserRents(this.props.match.params.id);
         }
     }
 

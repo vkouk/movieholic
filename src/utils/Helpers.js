@@ -4,8 +4,8 @@ export const returnRentTotal = (movies, series, dateOrdered) => {
     let total = 0;
 
     if (movies || series) {
-        const moviesRating = movies.reduce((acc, curr) => (typeof acc !== 'undefined' ? acc : 0) + (curr.rating !== 'N/A' ? parseFloat(curr.rating) : 1), 0);
-        const seriesRating = series.reduce((acc, curr) => (typeof acc !== 'undefined' ? acc : 0) + (curr.rating !== 'N/A' ? parseFloat(curr.rating) : 1), 0);
+        const moviesRating = movies ? movies.reduce((acc, curr) => (typeof acc !== 'undefined' ? acc : 0) + (curr.rating !== 'N/A' ? parseFloat(curr.rating) : 1), 0) : 0;
+        const seriesRating = series ?series.reduce((acc, curr) => (typeof acc !== 'undefined' ? acc : 0) + (curr.rating !== 'N/A' ? parseFloat(curr.rating) : 1), 0) : 0;
         const rentalRating = parseFloat(((moviesRating + seriesRating) / 10).toFixed(2));
         const rentalDays = moment().diff(dateOrdered, 'days') + 1;
 
