@@ -32,7 +32,7 @@ class Recommendation extends Component {
                                 Please <span className="btn btn--home" onClick={() => onSelectChange(0)}>Login</span> / <span className="btn btn--home" onClick={() => onSelectChange(1)}>Register</span> to browse movieholic.
                             </div>
                             <div className="col-sm-6">
-                                {selectedIndex === null ? null : selectedIndex === 1 ? <Login /> : <Register />}
+                                {selectedIndex === null ? null : selectedIndex === 0 ? <Login /> : <Register />}
                             </div>
                         </div>
                     </div>
