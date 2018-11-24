@@ -13,7 +13,7 @@ class Checkout extends React.Component {
                 description={'Payment for your order is required.'}
                 amount={Math.round(this.props.amount) * 100}
                 token={({ id }) => this.props.returnRent({ rentId: this.props.rentId, id }, this.props.navigation)}
-                stripeKey={Config.STRIPE_KEY}
+                stripeKey={Config.REACT_APP_STRIPE_KEY}
                 image="http://movieholic.herokuapp.com/images/logo.png"
             >
                 <button className="list__btn">

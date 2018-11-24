@@ -15,7 +15,7 @@ class AddBalance extends React.Component {
                 description={'Deposit € to your account.'}
                 amount={Math.round(this.props.amount) * 100}
                 token={({ id }) => this.props.addUserBalance({ amount: Math.round(this.props.amount), id, userId })}
-                stripeKey={Config.STRIPE_KEY}
+                stripeKey={Config.REACT_APP_STRIPE_KEY}
                 image="http://movieholic.herokuapp.com/images/logo.png"
             >
                 <div className="form__btn">
