@@ -19,7 +19,7 @@ class ProfileOrdersDetail extends Component {
                                 this.props.order.movies && this.props.order.movies.length >= 1 ? this.props.order.movies.map(movie => {
                                     return (
                                         <li key={movie._id} className="flex items-center lh-copy pa3 ph0-l bb b--black-10">
-                                            <img className="w2 h2 w3-ns h3-ns br-100" src={movie.poster} alt={movie.title} />
+                                            <img className="w4 h4 w4-ns h4-ns br-100" src={movie.poster} alt={movie.title} />
                                             <div className="pl3 flex-auto">
                                                 <span className="f6 db black-70">{movie.title}</span>
                                                 <span className="f6 db black-70">{movie.genre}</span>
