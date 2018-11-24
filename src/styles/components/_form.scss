@@ -20,6 +20,9 @@
         @include u-title;
         margin-top: 10px;
         color: $white;
+        & + p {
+            margin-top: 0;
+        }
     }
     &__input {
         margin: 15px auto;

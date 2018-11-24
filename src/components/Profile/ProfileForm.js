@@ -26,6 +26,7 @@ class ProfileForm extends Component {
                     <div className="form__header">
                         <img className="br4 w3" src={this.state.avatar} alt={this.state.username} />
                         <p className="form__text">Hello, {this.state.username}. Please edit your profile.</p>
+                        <p className="form__text">Current balance: {this.props.balance.toFixed(2)}€</p>
                     </div>
                     <input
                         className="form__input"
