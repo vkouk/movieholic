@@ -3,6 +3,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getUserRecommendations, clearRecommendations } from '../../actions';
 import RecommendationList from '../Common/ListItem';
+import Login from '../Auth/Login';
+import Register from '../Auth/Register';
 
 class Recommendation extends Component {
     componentDidMount() {
@@ -20,22 +22,26 @@ class Recommendation extends Component {
     }
 
     renderContent = () => {
-        const { recommendations, isHeaderVisible, location, isAuthenticated, error } = this.props;
-        if (Object.keys(recommendations).length === 0) {
+        const { recommendations, isHeaderVisible, location, isAuthenticated, error, selectedIndex, onSelectChange } = this.props;
+        if ((Object.keys(recommendations).length === 0) || (recommendations.suggestedMovies.length === 0 && recommendations.suggestedSeries.length === 0)) {
             return (
                 !isAuthenticated ?
-                    <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-sm-12 text-center pt-2">
-                                Please <Link className="btn btn--home" to={'/login'}>Login</Link> to see your recommends.
+                    <div className="container">
+                        <div className="row pt-4 pb-4">
+                            <div className="col-sm-6 text-center">
+                                Please <span className="btn btn--home" onClick={() => onSelectChange(0)}>Login</span> / <span className="btn btn--home" onClick={() => onSelectChange(1)}>Register</span> to browse movieholic.
+                            </div>
+                            <div className="col-sm-6">
+                                {selectedIndex === 0 ? <Login /> : <Register />}
                             </div>
                         </div>
                     </div>
                     :
                     <div className="container-fluid">
-                        <div className="row">
-                            <div className="col-sm-12 text-center pt-2">
-                                {error}
+                        <div className="row pt-2">
+                            <div className="col-sm-12 text-center">
+                                <p>No recommendations found for you. Visit <Link to={'/movies'} className="btn btn--home">Movies</Link> or <Link to={'/series'} className="btn btn--home">Series</Link> and rent some.</p>
+                                {error && <p>{error}</p>}
                             </div>
                         </div>
                     </div>

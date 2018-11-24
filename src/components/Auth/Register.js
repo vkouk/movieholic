@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { registerUser } from '../../actions/authActions';
 
@@ -23,12 +24,14 @@ class Register extends Component {
         e.preventDefault();
 
         this.props.registerUser(this.state, this.props.history);
+        this.setState({ email: '', username: '', password: '' });
     };
 
     render() {
         return (
             <div className="form">
                 <form className="form__content" onSubmit={this.onFormSubmit}>
+                    <p className="form__text">Register</p>
                     <input
                         className="form__input"
                         type="email"
@@ -67,4 +70,4 @@ const mapStateToProps = ({ auth }) => {
     return { error, isAuthenticated };
 }
 
-export default connect(mapStateToProps, { registerUser })(Register);
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));

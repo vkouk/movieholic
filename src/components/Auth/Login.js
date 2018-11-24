@@ -36,6 +36,7 @@ class Login extends Component {
         return (
             <div className="form">
                 <form className="form__content" onSubmit={this.onFormSubmit}>
+                    <p className="form__text">Login</p>
                     <input
                         className="form__input"
                         type="email"

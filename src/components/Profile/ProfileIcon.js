@@ -25,7 +25,7 @@ class ProfileIcon extends Component {
                             this.props.isAuthenticated ? null :
                                 <DropdownItem>
                                     <li className="header__menu__item">
-                                        <Link onClick={this.props.onHeaderToggle} to={"/login"}>Login</Link>
+                                        <Link onClick={this.props.onHeaderToggle} to={"/"}>Login</Link>
                                     </li>
                                 </DropdownItem>
                         }
@@ -44,7 +44,7 @@ class ProfileIcon extends Component {
                                     this.props.isAuthenticated ? <a onClick={e => {
                                         this.props.onLogout(e);
                                         this.props.onHeaderToggle();
-                                    }}>Logout</a> : <Link to={"/register"} onClick={this.props.onHeaderToggle}>Register</Link>
+                                    }}>Logout</a> : <Link to={"/"} onClick={this.props.onHeaderToggle}>Register</Link>
                                 }
                             </li>
                         </DropdownItem>

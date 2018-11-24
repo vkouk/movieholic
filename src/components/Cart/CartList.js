@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 
 export default ({ isCartVisible, onCartToggle, onOrderClick, onMovieCartRemove, onSerieCartRemove, error, cart }) => {
+    const cartTotalAmount = cart.movie ? cart.movie.length : 0 + cart.serie ? cart.serie.length : 0;
     return (
         <div className={`cart ${isCartVisible ? 'is-visible' : ''}`}>
             <div className="cart__header">
@@ -40,7 +41,7 @@ export default ({ isCartVisible, onCartToggle, onOrderClick, onMovieCartRemove, 
             </div>
             <div className="cart__footer">
                 <div className="cart__footer__item">
-                    <button className="cart__btn" onClick={e => {
+                    <button className={`cart__btn ${cartTotalAmount >= 1 ? '' : 'is-disabled'}`} onClick={e => {
                         if (error) {
                             return error;
                         } else {

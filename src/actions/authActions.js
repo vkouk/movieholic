@@ -20,7 +20,7 @@ export const loginUser = ({ email, password }) => async dispatch => {
 
 export const registerUser = (userData, history) => async dispatch => {
     await axios.post(`${Config.API_URL}/user/register`, userData)
-        .then(() => history.push('/login'))
+        .then(() => history.push('/'))
         .catch(error => dispatch({ type: AUTH_ERROR, payload: error.response.data }));
 };
 

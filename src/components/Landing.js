@@ -5,6 +5,12 @@ import Search from './Common/Search';
 import Recommendation from './Recommendation/Recommendation';
 
 class Landing extends Component {
+    state = {
+        selectedIndex: null
+    };
+
+    onSelectChange = value => this.setState({ selectedIndex: value });;
+
     render() {
         return (
             <div>
@@ -24,7 +30,7 @@ class Landing extends Component {
                     </div>
                 </div>
                 <Search navigation={this.props.history} />
-                <Recommendation isHeaderVisible={this.props.isHeaderVisible} />
+                <Recommendation isHeaderVisible={this.props.isHeaderVisible} selectedIndex={this.state.selectedIndex} onSelectChange={this.onSelectChange} />
             </div>
         );
     }
