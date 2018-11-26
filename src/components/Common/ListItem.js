@@ -91,21 +91,21 @@ class ListItem extends Component {
                                 />
                             )
                         })}
-                    <div className="list__footer">
-                        {currentPage && (
-                            <span className="text-secondary mb-2">
-                                Page <span className="font-weight-bold">{currentPage}</span> /{" "}
-                                <span className="font-weight-bold">{totalPages}</span>
-                            </span>
-                        )}
-                        <div className="d-flex flex-row align-items-center">
-                            <Pagination
-                                totalRecords={totalData}
-                                pageLimit={8}
-                                pageNeighbours={1}
-                                onPageChanged={this.onPageChanged}
-                            />
-                        </div>
+                </div>
+                <div className="list__footer">
+                    {currentPage && (
+                        <span className="text-secondary mb-2">
+                            Page <span className="font-weight-bold">{currentPage}</span> /{" "}
+                            <span className="font-weight-bold">{totalPages}</span>
+                        </span>
+                    )}
+                    <div className="d-flex flex-row align-items-center">
+                        <Pagination
+                            totalRecords={totalData}
+                            pageLimit={8}
+                            pageNeighbours={1}
+                            onPageChanged={this.onPageChanged}
+                        />
                     </div>
                 </div>
             </div>

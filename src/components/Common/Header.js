@@ -20,7 +20,12 @@ class Header extends Component {
 
         return (
             <div>
-                <button onClick={this.props.onHeaderToggle} className="btn-toggle btn-toggle--fixed">
+                <button onClick={() => {
+                    this.props.onHeaderToggle();
+                    if (this.props.isCartVisible) {
+                        this.props.onCartToggle();
+                    }
+                }} className="btn-toggle btn-toggle--fixed">
                     <div className={`btn-toggle--icon ${this.props.isHeaderVisible ? 'is-open' : ''}`}><span></span><span></span><span></span></div>
                 </button>
 
@@ -39,6 +44,13 @@ class Header extends Component {
                             <li className="header__menu__item">
                                 <Link to={"/series"} onClick={this.props.onHeaderToggle}>Series</Link>
                             </li>
+                            {
+                                this.props.user.isAdmin ?
+                                    <li className="header__menu__item">
+                                        <Link to={"/dashboard"} onClick={this.props.onHeaderToggle}>Dashboard</Link>
+                                    </li>
+                                    : null
+                            }
                             <li className="header__menu__item">
                                 <div className="header__cart">
                                     <div className={cartCount >= 1 ? null : 'is-disabled'} onClick={() => {
@@ -50,13 +62,6 @@ class Header extends Component {
                                     </div>
                                 </div>
                             </li>
-                            {
-                                this.props.user.isAdmin ?
-                                    <li className="header__menu__item">
-                                        <Link to={"/dashboard"} onClick={this.props.onHeaderToggle}>Dashboard</Link>
-                                    </li>
-                                    : null
-                            }
                             {
                                 <ProfileIcon
                                     {...this.props.user}
