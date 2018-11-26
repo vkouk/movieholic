@@ -18,14 +18,14 @@ What things you need to install the software and how to install them
 
 A step by step series of examples that tell you how to get a development env running
 
-npm install
-npm run dev
+* npm install
+* npm run dev
 
-End with an example of getting some data out of the system or using it for a little demo
+API should be already up and running too, in order to start using REST API endpoints.
 
 ## Deployment
 
-Application is deploy in heroku.com and running in production mode.
+Application is deploy in www.heroku.com and running in production mode.
 
 ## Built With
 
@@ -46,9 +46,3 @@ See also the list of [contributors](https://github.com/vkouk/movieholic-api/cont
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
-
-## Acknowledgments
-
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
