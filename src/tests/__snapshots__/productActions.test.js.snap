@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`movie/serie actions fetch movie/serie by title should correct fetch data by title 1`] = `Array []`;
+
+exports[`movie/serie actions fetch movies/series should correct fetch data 1`] = `Array []`;
