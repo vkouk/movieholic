@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`auth actions add user balance should correct add user balance 1`] = `Array []`;
+
+exports[`auth actions get user's profile should return correct user profile 1`] = `Array []`;
+
+exports[`auth actions login user should correct login user 1`] = `Array []`;
+
+exports[`auth actions update user's profile should correct update user profile 1`] = `Array []`;
