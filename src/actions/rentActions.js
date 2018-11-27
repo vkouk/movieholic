@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { Config } from '../utils/Config';
 import {
-    ORDER_CART_ITEMS, ADD_TO_CART, GET_CART, CALCULATE_CART_TOTAL, ORDER_ERROR, GET_ORDER, GET_ORDERS, REMOVE_MOVIE_CART_ITEM, REMOVE_SERIE_CART_ITEM, GET_USER_ORDERS
+    ORDER_CART_ITEMS, ADD_TO_CART, GET_CART, CALCULATE_CART_TOTAL, ORDER_ERROR, GET_ORDER, GET_ORDERS, REMOVE_MOVIE_CART_ITEM, REMOVE_SERIE_CART_ITEM, GET_USER_ORDERS, RETURN_ORDER
 } from './types';
 
 export const storeRent = (rentValues, history) => async dispatch => {
@@ -53,6 +53,9 @@ export const removeSerieFromCart = serieId => async dispatch => {
 
 export const returnRent = (returnValues, history) => async dispatch => {
     await axios.post(`${Config.API_URL}/rent/return`, returnValues)
-        .then(() => history.push('/'))
+        .then(() => {
+            dispatch({ type: RETURN_ORDER });
+            history.push('/');
+        })
         .catch(error => dispatch({ type: ORDER_ERROR, payload: error.response.data }));
 };

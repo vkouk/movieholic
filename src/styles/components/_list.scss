@@ -117,9 +117,8 @@
         }
     }
     &__error {
-        @include u-title;
+        font-weight: 700;
         color: $lightred;
-        max-width: 100px;
     }
     &__footer {
         width: 100%;

@@ -56,12 +56,12 @@ class ProfileOrders extends Component {
                                         <div>
                                             {order.dateReturned || (moment(order.dateOrdered).format('DD/MM/YYYY') === moment(new Date()).format('DD/MM/YYYY')) ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
                                         </div>
-                                        {error && <div className="list__error">{error}</div>}
                                     </div>
                                 </div>
                             );
                         })
                     }
+                    {error && <div className="list__error">{error}</div>}
                     <div className="list__footer">
                         {currentPage && (
                             <span className="text-secondary mb-2">

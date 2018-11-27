@@ -8,6 +8,7 @@ import {
     GET_USER_ORDERS,
     REMOVE_MOVIE_CART_ITEM,
     REMOVE_SERIE_CART_ITEM,
+    RETURN_ORDER,
     ORDER_ERROR
 } from '../actions/types';
 
@@ -30,6 +31,8 @@ export default (state = initialState, action) => {
             return { ...state, cart: { ...state.cart } };
         case ORDER_CART_ITEMS:
             return { ...state, cart: {}, cartTotal: 0, error: '' };
+        case RETURN_ORDER:
+            return { ...state, error: '' };
         case GET_ORDER:
             return { ...state, order: action.payload };
         case GET_ORDERS:

@@ -40,7 +40,7 @@ class Profile extends Component {
                     <div className="list__col list__col--small">
                         <ProfileOrders
                             orders={this.props.userOrders}
-                            error={this.props.error}
+                            error={this.props.rentError}
                             navigation={this.props.history}
                         />
                     </div>
@@ -54,7 +54,7 @@ const mapStateToProps = ({ auth, rent }) => {
     const { user, error, isAuthenticated } = auth;
     const { userOrders } = rent;
 
-    return { user, error, isAuthenticated, userOrders };
+    return { user, error, isAuthenticated, userOrders, rentError: rent.error };
 };
 
 export default connect(mapStateToProps, { getProfile, updateProfile, getUserRents })(Profile);
