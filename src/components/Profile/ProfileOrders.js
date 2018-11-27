@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import moment from 'moment';
 import Pagination from '../Common/Pagination';
 import Checkout from '../../utils/Checkout';
 import { returnRentTotal } from '../../utils/Helpers';
+import ProfileOrdersDetail from './ProfileOrdersDetail';
 
 class ProfileOrders extends Component {
     state = {
         'currentPage': null,
         'totalPages': null,
-        'currentData': this.props.orders
+        'currentData': this.props.orders,
+        'isOrderVisible': false,
+        'selectedOrderId': null
     };
 
     onPageChanged = data => {
@@ -17,7 +19,14 @@ class ProfileOrders extends Component {
 
         const offset = (currentPage - 1) * pageLimit;
         const currentData = this.props.orders.slice(offset, offset + pageLimit);
-        this.setState({ currentPage, totalPages, currentData });
+        this.setState({ currentPage, totalPages, currentData, isOrderVisible: false, selectedOrderId: null });
+    };
+
+    onOrderToggle = id => {
+        this.setState(prevState => ({
+            isOrderVisible: !prevState.isOrderVisible,
+            selectedOrderId: id
+        }));
     };
 
     render() {
@@ -26,6 +35,8 @@ class ProfileOrders extends Component {
             currentPage,
             totalPages,
             currentData,
+            isOrderVisible,
+            selectedOrderId
         } = this.state;
         const totalData = this.props.orders.length;
 
@@ -52,7 +63,7 @@ class ProfileOrders extends Component {
                                         <h2 className="f6 fw4 mt0 mb0 black-60">Movies Rented: {order.movies.length}, Series Rented: {order.series.length}</h2>
                                     </div>
                                     <div className="list__table list__table--center">
-                                        <div className="list__btn"><Link to={`/order/${order._id}`}>See Order</Link></div>
+                                        <div className="list__btn" onClick={() => this.onOrderToggle(order._id)}>See Order</div>
                                         <div>
                                             {order.dateReturned || (moment(order.dateOrdered).format('DD/MM/YYYY') === moment(new Date()).format('DD/MM/YYYY')) ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
                                         </div>
@@ -62,6 +73,7 @@ class ProfileOrders extends Component {
                         })
                     }
                     {error && <div className="list__error">{error}</div>}
+                    {isOrderVisible && <ProfileOrdersDetail orderId={selectedOrderId} />}
                     <div className="list__footer">
                         {currentPage && (
                             <span className="text-secondary mb-2">

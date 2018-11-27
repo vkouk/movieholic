@@ -10,6 +10,10 @@
                 flex: 0 0 41.666667%;
                 max-width: 41.666667%;
             }
+            &--big {
+                flex: 0 0 100%;
+                max-width: 100%;
+            }
         }
         &__item {
             margin: 0 auto;
@@ -67,6 +71,15 @@
         &__item {
             &__text {
                 max-width: 300px;
+            }
+        }
+        &__row {
+            & > div > ul li {
+                @include u-dflex-center;
+                text-align: center;
+                & > div > .genre, & > div > .title {
+                    display: none;
+                }
             }
         }
     }

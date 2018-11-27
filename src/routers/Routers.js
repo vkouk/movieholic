@@ -5,7 +5,6 @@ import Landing from '../components/Landing';
 import Profile from '../components/Profile/Profile';
 import Movie from '../components/Movie/Movie';
 import Serie from '../components/Serie/Serie';
-import ProfileOrdersDetail from '../components/Profile/ProfileOrdersDetail';
 
 export default ({ isHeaderVisible, onHeaderToggle, isCartVisible, onCartToggle }) => {
     return (
@@ -16,7 +15,6 @@ export default ({ isHeaderVisible, onHeaderToggle, isCartVisible, onCartToggle }
                 <Route path="/profile/:id" component={Profile} />
                 <Route path="/movies" render={() => <Movie isHeaderVisible={isHeaderVisible} isCartVisible={isCartVisible} onCartToggle={onCartToggle} />} />
                 <Route path="/series" render={() => <Serie isHeaderVisible={isHeaderVisible} isCartVisible={isCartVisible} onCartToggle={onCartToggle} />} />
-                <Route path="/order/:id" component={ProfileOrdersDetail} />
             </div>
         </BrowserRouter>
     );
