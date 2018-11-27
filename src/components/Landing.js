@@ -9,7 +9,7 @@ class Landing extends Component {
         selectedIndex: null
     };
 
-    onSelectChange = value => this.setState({ selectedIndex: value });;
+    onSelectChange = value => this.setState({ selectedIndex: value });
 
     render() {
         return (

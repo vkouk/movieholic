@@ -38,6 +38,7 @@
     "tachyons": "^4.11.1"
   },
   "devDependencies": {
+    "husky": "^1.2.0",
     "redux-mock-store": "^1.5.3"
   },
   "scripts": {
@@ -57,5 +58,10 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-push": "npm run test:coverage"
+    }
+  }
 }
