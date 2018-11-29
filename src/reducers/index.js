@@ -4,11 +4,13 @@ import rentReducer from './rentReducer';
 import movieReducer from './movieReducer';
 import serieReducer from './serieReducer';
 import recommendationReducer from './recommendationReducer';
+import dashboardReducer from './dashboardReducer';
 
 export default combineReducers({
     auth: authReducer,
     rent: rentReducer,
     movie: movieReducer,
     serie: serieReducer,
-    recommendation: recommendationReducer
+    recommendation: recommendationReducer,
+    dashboard: dashboardReducer
 });

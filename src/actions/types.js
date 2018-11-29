@@ -24,4 +24,6 @@ export const ORDER_ERROR = 'order_error';
 export const GET_USER_RECOMMENDATIONS = 'get_user_recommendations';
 export const CLEAR_RECOMMENDATIONS = 'clear_recommendations';
 
+export const FETCH_DASHBOARD = 'fetch_dashboard';
+
 export const FETCH_ERROR = 'fetch_error';

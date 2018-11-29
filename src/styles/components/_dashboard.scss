@@ -1,0 +1,19 @@
+.dashboard {
+    width: 100%;
+    height: auto;
+    &__row {
+        display: flex;
+        flex-wrap: wrap;
+        width: 1440px;
+        align-items: center;
+        margin: 0 auto;
+    }
+    &__col {
+        margin: 20px 0;
+        flex: 0 0 33.333333%;
+        max-width: 33.333333%;
+        max-height: 750px;
+        height: auto;
+        overflow: auto;
+    }
+}
