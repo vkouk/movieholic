@@ -9,7 +9,7 @@ class Dashboard extends Component {
         if (this.props.user.isAdmin && this.props.isAuthenticated) {
             this.props.getLatestOrders();
             this.props.getLatestMembers();
-            //TODO this.props.getMostRented();
+            this.props.getMostRented();
         } else {
             this.props.history.push('/');
         }
@@ -18,14 +18,14 @@ class Dashboard extends Component {
     render() {
         return (
             <div className="dashboard">
-                {/* TODO <Suspense fallback={<Spinner />}>
-                    <DashboardList data={this.props.mostRented} />
-                </Suspense> */}
                 <Suspense fallback={<Spinner />}>
-                    <DashboardList data={this.props.orders} />
+                    <DashboardList data={this.props.mostRented} headerTitle={'Most Rented'} />
                 </Suspense>
                 <Suspense fallback={<Spinner />}>
-                    <DashboardList data={this.props.members} />
+                    <DashboardList data={this.props.orders} headerTitle={'Latest Orders'} />
+                </Suspense>
+                <Suspense fallback={<Spinner />}>
+                    <DashboardList data={this.props.members} headerTitle={'Latest Members'} />
                 </Suspense>
             </div>
         )
