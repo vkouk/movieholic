@@ -21,7 +21,8 @@ A step by step series of examples that tell you how to get a development env run
 * npm install
 * npm run dev
 
-API should be already up and running too, in order to start using REST API endpoints.
+* Development server should be already up and running too, in order to start using REST API endpoints.
+* Already deployed API Server can be used for all endpoints. ( https://movieholic-api.herokuapp.com/ )
 
 ## Deployment
 
