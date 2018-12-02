@@ -1,99 +1,131 @@
-import React, { Component } from 'react';
-import moment from 'moment';
-import Pagination from '../Common/Pagination';
-import Checkout from '../../utils/Checkout';
-import { returnRentTotal } from '../../utils/Helpers';
-import ProfileOrdersDetail from './ProfileOrdersDetail';
+import React, { Component } from "react";
+import moment from "moment";
+import Pagination from "../Common/Pagination";
+import Checkout from "../../utils/Checkout";
+import { returnRentTotal } from "../../utils/Helpers";
+import ProfileOrdersDetail from "./ProfileOrdersDetail";
 
 class ProfileOrders extends Component {
-    state = {
-        'currentPage': null,
-        'totalPages': null,
-        'currentData': this.props.orders,
-        'isOrderVisible': false,
-        'selectedOrderId': null
-    };
+  state = {
+    currentPage: null,
+    totalPages: null,
+    currentData: this.props.orders,
+    isOrderVisible: false,
+    selectedOrderId: null
+  };
 
-    onPageChanged = data => {
-        const { currentPage, totalPages, pageLimit } = data;
+  onPageChanged = data => {
+    const { currentPage, totalPages, pageLimit } = data;
 
-        const offset = (currentPage - 1) * pageLimit;
-        const currentData = this.props.orders.slice(offset, offset + pageLimit);
-        this.setState({ currentPage, totalPages, currentData, isOrderVisible: false, selectedOrderId: null });
-    };
+    const offset = (currentPage - 1) * pageLimit;
+    const currentData = this.props.orders.slice(offset, offset + pageLimit);
+    this.setState({
+      currentPage,
+      totalPages,
+      currentData,
+      isOrderVisible: false,
+      selectedOrderId: null
+    });
+  };
 
-    onOrderToggle = id => {
-        this.setState(prevState => ({
-            isOrderVisible: !prevState.isOrderVisible,
-            selectedOrderId: id
-        }));
-    };
+  onOrderToggle = id => {
+    this.setState(prevState => ({
+      isOrderVisible: !prevState.isOrderVisible,
+      selectedOrderId: id
+    }));
+  };
 
-    render() {
-        const { error, navigation } = this.props;
-        const {
-            currentPage,
-            totalPages,
-            currentData,
-            isOrderVisible,
-            selectedOrderId
-        } = this.state;
-        const totalData = this.props.orders.length;
+  render() {
+    const { error, navigation } = this.props;
+    const {
+      currentPage,
+      totalPages,
+      currentData,
+      isOrderVisible,
+      selectedOrderId
+    } = this.state;
+    const totalData = this.props.orders.length;
 
-        if (totalData === 0) {
-            return (
-                <div>
-                    <span className="b f3 bb">No orders found.</span>
-                </div>
-            );
-        }
-
-        return (
-            <div className="list__row list__row--size">
-                <div className="list__col list__col--big ml-3">
-                    <span className="b f3 bb">Latest Orders</span>
-                </div>
-                <div className="list__col list__col--big">
-                    {
-                        currentData.sort((a, b) => b.dateOrdered - a.dateOrdered).map(order => {
-                            return (
-                                <div key={order._id} className="list__table bb b--black-05 pb2 mt2">
-                                    <div>
-                                        <h1 className="f6 f5-ns fw6 lh-title black mv0">Order datetime: {moment(order.dateOrdered).format('DD/MM/YYYY HH:MM')}</h1>
-                                        <h2 className="f6 fw4 mt0 mb0 black-60">Movies Rented: {order.movies.length}, Series Rented: {order.series.length}</h2>
-                                    </div>
-                                    <div className="list__table list__table--center">
-                                        <div className="list__btn" onClick={() => this.onOrderToggle(order._id)}>See Order</div>
-                                        <div>
-                                            {order.dateReturned || (moment(order.dateOrdered).format('DD/MM/YYYY') === moment(new Date()).format('DD/MM/YYYY')) ? null : <Checkout rentId={order._id} amount={returnRentTotal(order.movies, order.series, order.dateOrdered)} navigation={navigation} />}
-                                        </div>
-                                    </div>
-                                </div>
-                            );
-                        })
-                    }
-                    {error && <div className="list__error">{error}</div>}
-                    {isOrderVisible && <ProfileOrdersDetail orderId={selectedOrderId} />}
-                    <div className="list__footer">
-                        {currentPage && (
-                            <span className="text-secondary mb-2">
-                                Page <span className="font-weight-bold">{currentPage}</span> /{" "}
-                                <span className="font-weight-bold">{totalPages}</span>
-                            </span>
-                        )}
-                        <div className="d-flex flex-row align-items-center">
-                            <Pagination
-                                totalRecords={totalData}
-                                pageLimit={5}
-                                pageNeighbours={1}
-                                onPageChanged={this.onPageChanged}
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        );
+    if (totalData === 0) {
+      return (
+        <div>
+          <span className="b f3 bb">No orders found.</span>
+        </div>
+      );
     }
+
+    return (
+      <div className="list__row list__row--size">
+        <div className="list__col list__col--big ml-3">
+          <span className="b f3 bb">Latest Orders</span>
+        </div>
+        <div className="list__col list__col--big">
+          {currentData
+            .sort((a, b) => b.dateOrdered - a.dateOrdered)
+            .map(order => {
+              return (
+                <div
+                  key={order._id}
+                  className="list__table bb b--black-05 pb2 mt2"
+                >
+                  <div>
+                    <h1 className="f6 f5-ns fw6 lh-title black mv0">
+                      Order datetime:{" "}
+                      {moment(order.dateOrdered).format("DD/MM/YYYY HH:MM")}
+                    </h1>
+                    <h2 className="f6 fw4 mt0 mb0 black-60">
+                      Movies Rented: {order.movies.length}, Series Rented:{" "}
+                      {order.series.length}
+                    </h2>
+                  </div>
+                  <div className="list__table list__table--center">
+                    <div
+                      className="list__btn"
+                      onClick={() => this.onOrderToggle(order._id)}
+                    >
+                      See Order
+                    </div>
+                    <div>
+                      {order.dateReturned ||
+                      moment(order.dateOrdered).format("DD/MM/YYYY") ===
+                        moment(new Date()).format("DD/MM/YYYY") ? null : (
+                        <Checkout
+                          rentId={order._id}
+                          amount={returnRentTotal(
+                            order.movies,
+                            order.series,
+                            order.dateOrdered
+                          )}
+                          navigation={navigation}
+                        />
+                      )}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          {error && <div className="list__error">{error}</div>}
+          {isOrderVisible && <ProfileOrdersDetail orderId={selectedOrderId} />}
+          <div className="list__footer">
+            {currentPage && (
+              <span className="text-secondary mb-2">
+                Page <span className="font-weight-bold">{currentPage}</span> /{" "}
+                <span className="font-weight-bold">{totalPages}</span>
+              </span>
+            )}
+            <div className="d-flex flex-row align-items-center">
+              <Pagination
+                totalRecords={totalData}
+                pageLimit={5}
+                pageNeighbours={1}
+                onPageChanged={this.onPageChanged}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
 }
 
 export default ProfileOrders;

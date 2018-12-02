@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import Routers from '../routers/Routers';
-import setAuthToken from '../utils/AuthToken';
-import { getCart } from '../actions';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import Routers from "../routers/Routers";
+import setAuthToken from "../utils/AuthToken";
+import { getCart } from "../actions";
 
-if (localStorage.getItem('token')) {
-  setAuthToken(localStorage.getItem('token'));
+if (localStorage.getItem("token")) {
+  setAuthToken(localStorage.getItem("token"));
 }
 
 class App extends Component {
@@ -31,12 +31,17 @@ class App extends Component {
   };
 
   render() {
-    return <Routers
-      {...this.state}
-      onHeaderToggle={this.onHeaderToggle}
-      onCartToggle={this.onCartToggle}
-    />;
+    return (
+      <Routers
+        {...this.state}
+        onHeaderToggle={this.onHeaderToggle}
+        onCartToggle={this.onCartToggle}
+      />
+    );
   }
 }
 
-export default connect(null, { getCart })(App);
+export default connect(
+  null,
+  { getCart }
+)(App);
