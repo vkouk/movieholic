@@ -1,10 +1,8 @@
 // Variables
-
 //Fonts
 $sm-font: 12px;
 $md-font: 16px;
 $lg-font: 22px;
-
 //Colors
 $white: #F3F3F3;
 $darkgrey: #343434;
@@ -13,7 +11,6 @@ $turquoise: #2C8693;
 $beige: #F0F1D5;
 $lightorange: #F19722;
 $lightred: #DE1212;
-
 //Mixins
 @mixin u-dflex-center {
     display: -webkit-flex;

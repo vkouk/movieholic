@@ -1,6 +1,5 @@
 // Settings, Variables & Mixins
 @import './settings';
-
 // Components
 @import './components/header';
 @import './components/form';
@@ -14,12 +13,11 @@
 @import './components/list';
 @import './components/popup';
 @import './components/dashboard';
-
 //Common
 @import './common/button';
 @import './common/responsive';
-
-body, html {
+body,
+html {
     font-family: 'Montserrat', sans-serif;
     background: $white;
 }

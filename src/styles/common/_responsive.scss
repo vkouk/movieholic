@@ -1,185 +1,186 @@
 @media screen and (max-width: 1440px) {
-    .list {
-        &__row {
-            width: 100%;
-        }
-        &__col {
-            flex: 0 0 33.333333%;
-            max-width: 33.333333%;
-            &--small {
-                flex: 0 0 41.666667%;
-                max-width: 41.666667%;
-            }
-            &--big {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
-        &__item {
-            margin: 0 auto;
-        }
+  .list {
+    &__row {
+      width: 100%;
     }
-    .hero {
-        &__bg {
-            width: 100%;
-        }
+    &__col {
+      flex: 0 0 33.333333%;
+      max-width: 33.333333%;
+      &--small {
+        flex: 0 0 41.666667%;
+        max-width: 41.666667%;
+      }
+      &--big {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
     }
-    .cart {
-        &__list {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
+    &__item {
+      margin: 0 auto;
     }
+  }
+  .hero {
+    &__bg {
+      width: 100%;
+    }
+  }
+  .cart {
+    &__list {
+      flex: 0 0 100%;
+      max-width: 100%;
+    }
+  }
 }
 
 @media screen and (max-width: 1024px) {
-    .list {
-        &__col {
-            flex: 0 0 50%;
-            max-width: 50%;
-            &--big {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
-        &__row {
-            overflow: hidden;
-        }
+  .list {
+    &__col {
+      flex: 0 0 50%;
+      max-width: 50%;
+      &--big {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
     }
-    .cart {
-        overflow: scroll;
-        &__list {
-            flex: 0 0 100%;
-            max-width: 100%;
-        }
+    &__row {
+      overflow: hidden;
     }
-    .form {
-        &__content {
-            padding: 3%;
-        }
+  }
+  .cart {
+    overflow: scroll;
+    &__list {
+      flex: 0 0 100%;
+      max-width: 100%;
     }
+  }
+  .form {
+    &__content {
+      padding: 3%;
+    }
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .hero {
-        &__container {
-            width: fit-content;
-            text-align: center;
-        }
+  .hero {
+    &__container {
+      width: fit-content;
+      text-align: center;
     }
-    .list {
-        &__item {
-            &__text {
-                max-width: 300px;
-            }
-        }
-        &__row {
-            & > div > ul li {
-                @include u-dflex-center;
-                text-align: center;
-                & > div > .genre, & > div > .title {
-                    display: none;
-                }
-            }
-        }
+  }
+  .list {
+    &__item {
+      &__text {
+        max-width: 300px;
+      }
     }
-    .popup {
-        &__container {
-            min-width: 100%;
+    &__row {
+      & > div > ul li {
+        @include u-dflex-center;
+        text-align: center;
+        & > div > .genre,
+        & > div > .title {
+          display: none;
         }
-        &__title {
-            max-width: 300px;
-        }
+      }
     }
+  }
+  .popup {
+    &__container {
+      min-width: 100%;
+    }
+    &__title {
+      max-width: 300px;
+    }
+  }
 }
 
 @media screen and (max-width: 425px) {
-    .list {
-        &__col {
-            flex: 0 0 100%;
-            max-width: 100%;
-            &--small {
-                flex: 0 0 100%;
-                max-width: 100%;
-            }
-        }
-        &__btn {
-            font-size: 7px;
-        }
-        &__header {
-            flex-direction: column;
-            &__text {
-                font-size: $md-font;
-                letter-spacing: .5px;
-            }
-        }
+  .list {
+    &__col {
+      flex: 0 0 100%;
+      max-width: 100%;
+      &--small {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
     }
-    .search {
-        height: 100%;
-        &__form {
-            flex-direction: column;
-            align-items: center;
-        }
-        &__input {
-            width: 100%;
-        }
-        &__control {
-            margin: 5px 8px;
-        }
-        &__dropdown,
-        &__submit {
-            margin: 5px 0;
-        }
+    &__btn {
+      font-size: 7px;
     }
-    .popup {
-        &__thumbnail {
-            display: none;
-        }
-        &__content {
-            flex-direction: column;
-            justify-content: center;
-        }
-        &__title {
-            margin: 5px 0;
-        }
-        &__text {
-            max-width: 350px;
-        }
-        &__details {
-            &>small {
-                padding-bottom: 5px;
-            }
-        }
+    &__header {
+      flex-direction: column;
+      &__text {
+        font-size: $md-font;
+        letter-spacing: 0.5px;
+      }
     }
+  }
+  .search {
+    height: 100%;
+    &__form {
+      flex-direction: column;
+      align-items: center;
+    }
+    &__input {
+      width: 100%;
+    }
+    &__control {
+      margin: 5px 8px;
+    }
+    &__dropdown,
+    &__submit {
+      margin: 5px 0;
+    }
+  }
+  .popup {
+    &__thumbnail {
+      display: none;
+    }
+    &__content {
+      flex-direction: column;
+      justify-content: center;
+    }
+    &__title {
+      margin: 5px 0;
+    }
+    &__text {
+      max-width: 350px;
+    }
+    &__details {
+      & > small {
+        padding-bottom: 5px;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: 320px) {
-    .list {
-        &__item {
-            width: fit-content;
-        }
+  .list {
+    &__item {
+      width: fit-content;
     }
-    .header {
-        min-width: 100%;
+  }
+  .header {
+    min-width: 100%;
+  }
+  .popup {
+    &__text {
+      max-width: 300px;
     }
-    .popup {
-        &__text {
-            max-width: 300px;
-        }
+  }
+  .cart {
+    min-width: 100%;
+    &__row {
+      width: fit-content;
     }
-    .cart {
-        min-width: 100%;
-        &__row {
-            width: fit-content;
-        }
-        &__header {
-            margin: 45px 10px;
-        }
-        &__item {
-            &>div {
-                flex-direction: column;
-                justify-content: center;
-            }
-        }
+    &__header {
+      margin: 45px 10px;
     }
+    &__item {
+      & > div {
+        flex-direction: column;
+        justify-content: center;
+      }
+    }
+  }
 }

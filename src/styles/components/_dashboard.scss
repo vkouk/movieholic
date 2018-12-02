@@ -1,34 +1,34 @@
 .dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 1440px;
+  margin: 0 auto;
+  &__row {
+    width: 100%;
+  }
+  &__col {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 1440px;
-    margin: 0 auto;
-    &__row {
-        width: 100%;
+    margin: 20px 0;
+    flex: 0 0 100%;
+  }
+  &__item {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+  &__container {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+    margin: 20px 0 0 0;
+  }
+  &__header {
+    @include u-title;
+    &:after {
+      content: "";
+      width: 50px;
+      height: 5px;
+      display: flex;
+      border-bottom: 2px solid #de1212;
     }
-    &__col {
-        display: flex;
-        margin: 20px 0;
-        flex: 0 0 100%;
-    }
-    &__item {
-        flex: 0 0 50%;
-        max-width: 50%;
-    }
-    &__container {
-        flex: 0 0 33.333333%;
-        max-width: 33.333333%;
-        margin: 20px 0 0 0;
-    }
-    &__header {
-        @include u-title;
-        &:after {
-            content: '';
-            width: 50px;
-            height: 5px;
-            display: flex;
-            border-bottom: 2px solid #DE1212;
-        }
-    }
+  }
 }

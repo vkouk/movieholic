@@ -1,12 +1,12 @@
 .page-item {
-    &.active {
-        .page-link {
-            background-color: $darkgrey;
-            border-color: $darkgrey;
-        }
+  &.active {
+    .page-link {
+      background-color: $darkgrey;
+      border-color: $darkgrey;
     }
+  }
 }
 
 .page-link {
-    color: $darkgrey;
+  color: $darkgrey;
 }

@@ -1,20 +1,20 @@
 .hero {
-    &__bg {
-        background: url('../images/hero-img.jpg');
+  &__bg {
+    background: url("../images/hero-img.jpg");
+  }
+  &__container {
+    min-height: 90vh;
+    height: auto;
+  }
+  &__link {
+    color: $white;
+    border-color: $white;
+    &:hover {
+      color: $white;
+      text-decoration: none;
     }
-    &__container {
-        min-height: 90vh;
-        height: auto;
+    &:active {
+      transform: scale(0);
     }
-    &__link {
-        color: $white;
-        border-color: $white;
-        &:hover {
-            color: $white;
-            text-decoration: none;
-        }
-        &:active {
-            transform: scale(0);
-        }
-    }
+  }
 }

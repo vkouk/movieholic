@@ -1,81 +1,87 @@
 .search {
-    @include u-dflex-center;
-    width: 100%;
-    height: 70px;
-    border-bottom: 2px solid $darkgrey;
-    margin-bottom: 20px;
-    &--borderless {
-        border-bottom: none;
-        margin-bottom: 0;
-    }
+  @include u-dflex-center;
+  width: 100%;
+  height: 70px;
+  border-bottom: 2px solid $darkgrey;
+  margin-bottom: 20px;
+  &--borderless {
+    border-bottom: none;
+    margin-bottom: 0;
+  }
 
-    &__form {
-        display: flex;
+  &__form {
+    display: flex;
+  }
+  &__control {
+    display: flex;
+    align-items: center;
+    border: 2px solid $darkgrey;
+    border-radius: 50px;
+    margin: 0 8px;
+    padding: 5px;
+  }
+  &__icon {
+    margin-left: 5px;
+  }
+  &__input {
+    border: 0;
+    border: 0;
+    background: transparent;
+    margin-left: 5px;
+    width: 155px;
+    &:focus {
+      outline-offset: 0;
+      outline: 0;
     }
-    &__control {
-        display: flex;
-        align-items: center;
-        border: 2px solid $darkgrey;
-        border-radius: 50px;
-        margin: 0 8px;
-        padding: 5px;
+  }
+  &__dropdown {
+    > .dropdown-menu.show .dropdown-item:hover {
+      cursor: pointer;
     }
-    &__icon {
-        margin-left: 5px;
-    }
-    &__input {
-        border: 0;
-        border: 0;
-        background: transparent;
-        margin-left: 5px;
-        width: 155px;
-        &:focus {
-            outline-offset: 0;
-            outline: 0;
-        }
-    }
-    &__dropdown {
-        > .dropdown-menu.show .dropdown-item:hover {
-            cursor: pointer;
-        }
-    }
+  }
 
-    &__btn, &__submit {
-        @include u-btn;
-        padding: 4px 15px;
-        margin: 0 8px;
-        border-radius: 50px;
-        &:not(:disabled):not(.disabled):active:focus, &:hover, &:focus, &:active, .show > .btn-secondary.dropdown-toggle {
-            box-shadow: none;
-            border: 2px solid $darkgrey;
-            background: transparent;
-            background-color: transparent;
-            color: $darkgrey;
-            outline: none;
-        }
+  &__btn,
+  &__submit {
+    @include u-btn;
+    padding: 4px 15px;
+    margin: 0 8px;
+    border-radius: 50px;
+    &:not(:disabled):not(.disabled):active:focus,
+    &:hover,
+    &:focus,
+    &:active,
+    .show > .btn-secondary.dropdown-toggle {
+      box-shadow: none;
+      border: 2px solid $darkgrey;
+      background: transparent;
+      background-color: transparent;
+      color: $darkgrey;
+      outline: none;
     }
-    > .dropdown-item.active, .dropdown-item:active {
-        background-color: transparent;
-        border: 2px solid $darkgrey;
-        outline: none;
-    }
+  }
+  > .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: transparent;
+    border: 2px solid $darkgrey;
+    outline: none;
+  }
 
-    &__error {
-        margin: 0;
-        color: $lightred;
-        font-weight: 700;
-    }
+  &__error {
+    margin: 0;
+    color: $lightred;
+    font-weight: 700;
+  }
 }
 
 .show > .btn-secondary.dropdown-toggle:focus {
-    box-shadow: none;
+  box-shadow: none;
 }
 
 .show > .btn-secondary.dropdown-toggle {
-    border: none;
-    outline: none;
-    box-shadow: none;
-    color: $darkblue;
-    background-color: transparent;
-    border: 2px solid $darkgrey;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  color: $darkblue;
+  background-color: transparent;
+  border: 2px solid $darkgrey;
 }
