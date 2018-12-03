@@ -31,4 +31,9 @@
       border-bottom: 2px solid #de1212;
     }
   }
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 0 0 ;
+  }
 }
