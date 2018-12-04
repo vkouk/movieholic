@@ -16,10 +16,10 @@ export default ({ record }) => {
           Joined at: {moment(record.joinedAt).format("DD/MM/YYYY")}
         </div>
       )}
-      {record.dateOrdered && record.rentalFee && (
+      {record.dateOrdered && (
         <div className="dashboard__item">
-          {moment(record.dateOrdered).format("DD/MM/YYYY")} - Rental Fee: €
-          {record.rentalFee.toFixed(2)}
+          {moment(record.dateOrdered).format("DD/MM/YYYY")}{" "}
+          {record.rentalFee && `- Rental Fee: €${record.rentalFee.toFixed(2)}`}
         </div>
       )}
       {record.movies && record.series && (
